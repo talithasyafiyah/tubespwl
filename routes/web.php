@@ -40,5 +40,6 @@ Route::get('/report', function () {
 
 //Kerjaan Ku
 //Home
+//Migration (user, siswa, tabungan, kelas)
 
 Route::get('/home', [HomeController::class, 'index']);

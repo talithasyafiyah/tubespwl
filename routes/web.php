@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +37,8 @@ Route::get('/transaksi', function () {
 Route::get('/report', function () {
     return view('website.report');
 });
+
+//Kerjaan Ku
+//Home
+
+Route::get('/home', [HomeController::class, 'index']);

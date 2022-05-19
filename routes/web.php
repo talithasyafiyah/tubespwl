@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,32 +17,24 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('website.index');
-});
+//Admin
+Route::get('dashAdmin', [AdminController::class, 'dashAdmin'])->name('admin.dashAdmin');
+Route::get('siswa', [AdminController::class, 'siswa'])->name('admin.siswa');
+Route::get('kelas', [AdminController::class, 'kelas'])->name('admin.kelas');
+Route::get('tabungan', [AdminController::class, 'tabungan'])->name('admin.tabungan');
+Route::get('transaksi', [AdminController::class, 'transaksi'])->name('admin.transaksi');
+Route::get('report', [AdminController::class, 'report'])->name('admin.report');
 
-Route::get('/siswa', function () {
-    return view('website.siswa');
-});
-
-Route::get('/kelas', function () {
-    return view('website.kelas');
-});
-
-Route::get('/tabungan', function () {
-    return view('website.tabungan');
-});
-
-Route::get('/transaksi', function () {
-    return view('website.transaksi');
-});
-
-Route::get('/report', function () {
-    return view('website.report');
-});
+//Siswa
+Route::get('dashSiswa', [SiswaController::class, 'dashSiswa'])->name('siswa.dashSiswa');
+Route::get('Siswa', [SiswaController::class, 'Siswa'])->name('siswa.siswa');
+Route::get('Tabungan', [SiswaController::class, 'Tabungan'])->name('siswa.tabungan');
+Route::get('Transaksi', [SiswaController::class, 'Transaksi'])->name('siswa.transaksi');
+Route::get('Report', [SiswaController::class, 'Report'])->name('siswa.report');
 
 //Kerjaan Ku
 //Home
 //Migration (user, siswa, tabungan, kelas)
 
 Route::get('/home', [HomeController::class, 'index']);
+/* Route::get('/transaksi', [TransaksiController::class, 'tambahTransaksi']); */

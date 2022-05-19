@@ -18,9 +18,8 @@ class CreateTabungansTable extends Migration
             $table->string('nama');
             $table->string('kelas');
             $table->bigInteger('saldo');
-            $table->Char('NISN');
-            $table->foreign('NISN')->references('NISN')->on('kelas');
-            $table->timestamps();
+            $table->char('NISN');
+            $table->foreign('NISN')->references('NISN')->on('siswas')->onUpdate('CASCADE');
         });
     }
 

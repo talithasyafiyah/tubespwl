@@ -4,7 +4,7 @@
           <div class="sidebar-header">
               <div class="d-flex justify-content-between">
                   <div class="logo">
-                      <a href="./index.php"><img src="" width="100" alt="Logo" srcset=""></a>
+                      <a href="/dashSiswa"><img src="" width="100" alt="Logo" srcset=""></a>
                   </div>
                   <div class="toggler">
                       <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -13,47 +13,47 @@
           </div>
           <div class="sidebar-menu">
               <ul class="menu">
-                  <li class="sidebar-item {{ Request::is('/home') ? 'active' : '' }}">
-                      <a href="/" class='sidebar-link'>
+                  <li class="sidebar-item {{ Request::is('dashSiswa') ? 'active' : '' }}">
+                      <a href="/dashSiswa" class='sidebar-link'>
                           <i class="bi bi-house-door-fill"></i>
                           <span>Home</span>
                       </a>
                   </li>
 
                   <li class="sidebar-title">Tables</li>
-                  {{-- <li class="sidebar-item {{ Request::is('siswa') ? 'active' : '' }}">
-                      <a href="/siswa" class='sidebar-link'>
+                  <li class="sidebar-item {{ Request::is('Siswa') ? 'active' : '' }}">
+                      <a href="/Siswa" class='sidebar-link'>
                           <i class="bi bi-people-fill"></i>
                           <span>Data Siswa</span>
                       </a>
                   </li>
 
-                  <li class="sidebar-item {{ Request::is('kelas') ? 'active' : '' }}">
+                  {{--<li class="sidebar-item {{ Request::is('kelas') ? 'active' : '' }}">
                       <a href="/kelas" class='sidebar-link'>
                           <i class="fa-solid fa-chalkboard-user"></i>
                           <span>Kelas</span>
                       </a>
                   </li> --}}
 
-                  <li class="sidebar-item {{ Request::is('tabungan') ? 'active' : '' }} || {{ Request::is('transaksi') ? 'active' : '' }}  has-sub">
+                  <li class="sidebar-item {{ Request::is('Tabungan') ? 'active' : '' }} || {{ Request::is('Transaksi') ? 'active' : '' }}  has-sub">
                       <a href="#" class='sidebar-link'>
                           <i class="fa-solid fa-hand-holding-dollar"></i>
                           <span>Tabungan</span>
                       </a>
-                      <ul class="submenu {{ Request::is('tabungan') ? 'active' : '' }} || {{ Request::is('transaksi') ? 'active' : '' }}">
-                          <li class="submenu-item {{ Request::is('tabungan') ? 'active' : '' }}">
-                              <a href="/tabungan">Tabungan</a>
+                      <ul class="submenu {{ Request::is('Tabungan') ? 'active' : '' }} || {{ Request::is('Transaksi') ? 'active' : '' }}">
+                          <li class="submenu-item {{ Request::is('Tabungan') ? 'active' : '' }}">
+                              <a href="/Tabungan">Tabungan</a>
                           </li>
-                          <li class="submenu-item {{ Request::is('transaksi') ? 'active' : '' }}">
-                              <a href="/transaksi">Transaksi</a>
+                          <li class="submenu-item {{ Request::is('Transaksi') ? 'active' : '' }}">
+                              <a href="/Transaksi">Transaksi</a>
                           </li>
                       </ul>
                   </li>
                   
                   <li class="sidebar-title">Other</li>
 
-                  <li class="sidebar-item {{ Request::is('report') ? 'active' : '' }}">
-                      <a href="/report" class='sidebar-link'>
+                  <li class="sidebar-item {{ Request::is('Report') ? 'active' : '' }}">
+                      <a href="/Report" class='sidebar-link'>
                           <i class="fa-solid fa-print"></i>
                           <span>Report</span>
                       </a>

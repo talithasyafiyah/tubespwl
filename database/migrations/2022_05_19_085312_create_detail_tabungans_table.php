@@ -17,12 +17,14 @@ class CreateDetailTabungansTable extends Migration
             $table->increments('detail_id');
             $table->bigInteger('jlh_setoran');
             $table->date('tgl_setoran');
+            $table->string('payment')->nullable();
+            $table->integer('no_rekening')->nullable();
             $table->char('NISN');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('tabungan_id');
-            $table->foreign('tabungan_id')->references('tabungan_id')->on('tabungans')->onUpdate('CASCADE');
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('CASCADE');
-            $table->foreign('NISN')->references('NISN')->on('siswas')->onUpdate('CASCADE');
+            $table->foreign('tabungan_id')->references('tabungan_id')->on('tabungans')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('NISN')->references('NISN')->on('siswas')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

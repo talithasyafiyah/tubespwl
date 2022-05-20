@@ -16,11 +16,12 @@ class CreateSiswasTable extends Migration
         Schema::create('siswas', function (Blueprint $table) {
             $table->char('NISN')->primary();
             $table->string('nama');
-            $table->string('kelas');
             $table->string('alamat');
             $table->char('no_hp', 12)->unique();
             $table->bigInteger('kelas_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->foreign('kelas_id')->references('kelas_id')->on('kelas');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

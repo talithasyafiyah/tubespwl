@@ -15,11 +15,9 @@ class CreateTabungansTable extends Migration
     {
         Schema::create('tabungans', function (Blueprint $table) {
             $table->id('tabungan_id');
-            $table->string('nama');
-            $table->string('kelas');
             $table->bigInteger('saldo');
             $table->char('NISN');
-            $table->foreign('NISN')->references('NISN')->on('siswas')->onUpdate('CASCADE');
+            $table->foreign('NISN')->references('NISN')->on('siswas')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

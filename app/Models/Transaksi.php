@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaksi extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'jlh_penarikan',
+        'tgl_penarikan',
+        'tabungan_id',
+    ];
 }

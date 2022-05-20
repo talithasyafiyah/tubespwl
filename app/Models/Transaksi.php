@@ -11,5 +11,7 @@ class Transaksi extends Model
         'jlh_penarikan',
         'tgl_penarikan',
         'tabungan_id',
+        'user_id',
+        'NISN',
     ];
 }

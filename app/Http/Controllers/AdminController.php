@@ -102,17 +102,27 @@ class AdminController extends Controller
 
     public function kelas()
     {
-        return view('admin.kelas', compact('kelas'));
+        $kelass = Kelas::all();
+        return view('admin.kelas', compact('kelass'));
     }
 
     public function tabungan()
     {
-        return view('admin.tabungan');
+        $tabungans = \DB::table('tabungans')
+                    ->join('siswas', 'siswas.NISN', '=', 'tabungans.NISN')
+                    ->join('kelas', 'kelas.kelas_id', '=', 'tabungans.kelas_id')
+                    ->get();
+        return view('admin.tabungan', compact('tabungans'));
     }
 
     public function transaksi()
     {
-        return view('admin.transaksi');
+        $transaksis = \DB::table('transaksis')
+                    ->join('siswas', 'siswas.NISN', '=', 'transaksis.NISN')
+                    ->join('users', 'users.id', '=', 'transaksis.user_id')
+                    ->join('tabungans', 'tabungans.tabungan_id', '=', 'transaksis.tabungan_id')
+                    ->get();
+        return view('admin.transaksi', compact('transaksis'));
     }
 
     public function report()

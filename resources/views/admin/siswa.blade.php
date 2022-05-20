@@ -31,23 +31,23 @@
                                         <th>NISN</th>
                                         <th>Nama</th>
                                         <th>Kelas</th>
-                                        <th>Alamat</th>
-                                        <th>No Hp</th>
-                                        <th>Action</th>
-                                        <th>Action</th>
+                                        <th>Detail</th>
+                                        <th>Edit</th>
+                                        <th>Hapus</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @php $i = 0 @endphp
                                     @foreach ($siswas as $siswa)
                                     <tr>
-                                        <td></td>
+                                    @php $i++ @endphp
+                                        <td>{{$i}}</td>
                                         <td>{{$siswa->NISN}}</td>
                                         <td>{{$siswa->nama}}</td>
                                         <td>{{$siswa->nama_kelas}}</td>
-                                        <td>{{$siswa->alamat}}</td>
-                                        <td>{{$siswa->no_hp}}</td>
-                                        <td></td>
-                                        <td></td>
+                                        <td><button type='submit' name='btnUpdate' class='btn btn-primary btn-sm'><i class='fa fa-folder-open'></i></td>
+                                        <td><button type='submit' name='btnUpdate' class='btn btn-success btn-sm'><i class='fa fa-edit'></i></button></td>
+                                        <td><button type='submit' name='btnUpdate' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i></button></td>
                                     </tr>
                                     @endforeach 
                                 </tbody>

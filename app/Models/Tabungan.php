@@ -10,5 +10,6 @@ class Tabungan extends Model
     protected $fillable = [
         'saldo',
         'NISN',
+        'kelas_id',
     ];
 }

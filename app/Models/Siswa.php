@@ -15,4 +15,8 @@ class Siswa extends Model
         'kelas_id',
         'user_id',
     ];
+
+    public function kelas(){
+        return $this->belongsTo(Kelas::class);
+    }
 }

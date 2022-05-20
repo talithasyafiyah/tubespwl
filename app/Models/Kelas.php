@@ -10,4 +10,8 @@ class Kelas extends Model
     protected $fillable = [
         'nama_kelas'
     ];
+
+    public function siswas() {
+        return $this->hasOne(Siswa::class);
+    }
 }

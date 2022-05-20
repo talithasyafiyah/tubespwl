@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Siswa;
+use App\Models\Kelas;
+
 
 class AdminController extends Controller
 {
@@ -91,12 +94,15 @@ class AdminController extends Controller
 
     public function siswa()
     {
-        return view('admin.siswa');
+        $siswas = \DB::table('siswas')
+                    ->join('kelas', 'kelas.kelas_id', '=', 'siswas.kelas_id')
+                    ->get();
+        return view('admin.siswa', compact('siswas'));
     }
 
     public function kelas()
     {
-        return view('admin.kelas');
+        return view('admin.kelas', compact('kelas'));
     }
 
     public function tabungan()

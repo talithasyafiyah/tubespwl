@@ -44,7 +44,7 @@
                                         <td>{{$i}}</td>
                                         <td>{{$tabungan->nama}}</td>
                                         <td>{{$tabungan->nama_kelas}}</td>
-                                        <td>{{$tabungan->saldo}}</td>
+                                        <td>Rp{{$tabungan->saldo}}</td>
                                         <td><button type='submit' name='btnUpdate' class='btn btn-primary btn-sm'><i class='fa fa-folder-open'></i></button></td>
                                         <td><button type='submit' name='btnUpdate' class='btn btn-success btn-sm'><i class='fa fa-edit'></i></button></td>
                                         <td><button type='submit' name='btnUpdate' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i></button></td>

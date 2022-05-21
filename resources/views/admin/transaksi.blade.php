@@ -43,7 +43,7 @@
                                     @php $i++ @endphp
                                         <td>{{$i}}</td>
                                         <td>{{$transaksi->nama}}</td>
-                                        <td>{{$transaksi->jlh_penarikan}}</td>
+                                        <td>Rp{{$transaksi->jlh_penarikan}}</td>
                                         <td>{{$transaksi->tgl_penarikan}}</td>
                                         <td>{{$transaksi->username}}</td>
                                         <td><button type='submit' name='btnUpdate' class='btn btn-success btn-sm'><i class='fa fa-edit'></i></button></td>

@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +34,10 @@ Route::get('Tabungan', [SiswaController::class, 'Tabungan'])->name('siswa.tabung
 Route::get('Transaksi', [SiswaController::class, 'Transaksi'])->name('siswa.transaksi');
 Route::get('Report', [SiswaController::class, 'Report'])->name('siswa.report');
 
+//Login Register
+Route::get('/login', [LoginController::class, 'index']);
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'store']);
 //Kerjaan Ku
 //Home
 //Migration (user, siswa, tabungan, kelas)

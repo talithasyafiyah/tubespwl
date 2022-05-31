@@ -28,7 +28,6 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Id Kelas</th>
                                         <th>Nama Kelas</th>
                                         <th>Edit</th>
                                         <th>Hapus</th>
@@ -40,7 +39,6 @@
                                     <tr>
                                     @php $i++ @endphp
                                         <td>{{$i}}</td>
-                                        <td>{{$kelas->kelas_id}}</td>
                                         <td>{{$kelas->nama_kelas}}</td>
                                         <td><button type='submit' name='btnUpdate' class='btn btn-success btn-sm'><i class='fa fa-edit'></i></button></td>
                                         <td><button type='submit' name='btnUpdate' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i></button></td>

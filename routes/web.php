@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LandingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,9 @@ Route::post('/register', [RegisterController::class, 'store']);
 //Kerjaan Ku
 //Home
 //Migration (user, siswa, tabungan, kelas)
+
+//Landing page
+Route::get('/', [LandingController::class, 'index']);
 
 Route::get('/home', [HomeController::class, 'index']);
 /* Route::get('/transaksi', [TransaksiController::class, 'tambahTransaksi']); */

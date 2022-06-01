@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Berita;
 
-class SiswaController extends Controller
+class LandingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,8 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        //
+        $beritas = Berita::all();
+        return view('landing.index', compact('beritas'));
     }
 
     /**
@@ -83,31 +84,9 @@ class SiswaController extends Controller
         //
     }
 
-    //custom
-
-     public function dashSiswa()
+    public function berita()
     {
-        $beritas = Berita::all();
-        return view('siswa.index', compact('beritas'));
-    }
-
-    public function Siswa()
-    {
-        return view('siswa.siswa');
-    }
-
-    public function Tabungan()
-    {
-        return view('siswa.tabungan');
-    }
-
-    public function Transaksi()
-    {
-        return view('siswa.transaksi');
-    }
-
-    public function Report()
-    {
-        return view('siswa.report');
+        
+       // return view('landing.index', compact('beritas'));
     }
 }

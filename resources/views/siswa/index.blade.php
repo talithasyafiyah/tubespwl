@@ -11,21 +11,20 @@
                             
                             <div class="row row-cols-1 row-cols-md-2 g-4">
 
-                                @for ($i = 1; $i <= 10 ; $i++)
+                                @foreach ($beritas as $berita)
                                 <div class="col">
                                     <div class="card shadow">
                                       <img src="assets/images/test.jpg" class="card-img-top" alt="...">
                                       <div class="card-body">
-                                        <h5 class="card-title">Berita {{$i}}</h5>
-                                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <h5 class="card-title">{{$berita->judul}}</h5>
+                                        <p class="card-text">{{$berita->konten}}</p>
                                         <div class="d-flex align-items-center ">
-                                            <img src="assets/images/profil.png" alt="" style="width: 40px">
-                                            <p class="my-0 mx-2 fs-6 fw-bold">John Doe</p>
+                                            <p class="my-0 mx-2 fs-6">{{$berita->tanggal}}</p>
                                         </div>
                                       </div>
                                     </div>
                                 </div>
-                                @endfor
+                                @endforeach
 
                                 
                                 

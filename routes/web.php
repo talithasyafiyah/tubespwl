@@ -21,7 +21,7 @@ use App\Http\Controllers\LandingController;
 */
 
 //Admin
-Route::get('dashAdmin', [AdminController::class, 'dashAdmin'])->name('admin.dashAdmin');
+Route::get('dashAdmin', [AdminController::class, 'dashAdmin'])->name('admin.dashAdmin')->middleware('auth');
 Route::get('siswa', [AdminController::class, 'siswa'])->name('admin.siswa');
 Route::get('kelas', [AdminController::class, 'kelas'])->name('admin.kelas');
 Route::get('tabungan', [AdminController::class, 'tabungan'])->name('admin.tabungan');
@@ -36,8 +36,11 @@ Route::get('Transaksi', [SiswaController::class, 'Transaksi'])->name('siswa.tran
 Route::get('Report', [SiswaController::class, 'Report'])->name('siswa.report');
 
 //Login Register
-Route::get('/login', [LoginController::class, 'index']);
-Route::get('/register', [RegisterController::class, 'index']);
+Route::get('/log', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/log', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
+
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 //Kerjaan Ku
 //Home

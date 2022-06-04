@@ -14,9 +14,7 @@ class RegisterController extends Controller
      */
     public function index()
     {
-        return view('register.index', [
-            
-        ]);
+        return view('register.index');
     }
 
     /**
@@ -39,18 +37,19 @@ class RegisterController extends Controller
     {
         $validatedData = $request->validate([
             'email' => 'required|email:dns|unique:users',
-            'username' => ['required', 'min:5', 'max:12', 'unique:users'],
+            'username' =>  'required|min:5|max:12|unique:users',
             'password' => 'required|min:8|max:50'
         ]);
 
+    
         $validatedData['password'] = bcrypt($validatedData['password']);
 
         User::create($validatedData);
 
-        /* $request->session()->flash('success', 'Registration success! Please login'); */
-        
-        return redirect('/login')->with('success', 'Registration success! Please login');
-    }
+        /* $request->session()->flash('success', 'Registrasi berhasil, silakan login!'); */
+
+        return redirect('/login')->with('success', 'Registrasi berhasil, silakan login!');
+    } 
 
     /**
      * Display the specified resource.

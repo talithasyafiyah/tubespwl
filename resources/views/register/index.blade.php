@@ -5,14 +5,14 @@
     <div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" action="/register" action="POST">
+				<form class="login100-form validate-form" action="/register" method="POST">
                     @csrf
 					<span class="login100-form-title p-b-48">
 						<img src="assets/images/logo.png" alt="" width="120">
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Valid username is: a@b.c" value="{{old('username')}}">
-						<input class="input100 @error('username')is-invalid" @enderror type="text" name="username" id="username">
+					<div class="wrap-input100" >
+						<input class="@error('username') is-invalid @enderror input100" type="text" name="username" id="username">
 						<span class="focus-input100" data-placeholder="Username"></span>
                         @error('username')
                         <div class="invalid-feedback">
@@ -21,8 +21,8 @@
                         @enderror
 					</div>
 
-                    <div class="wrap-input100 validate-input"  data-validate = "Valid email is: a@b.c" required value="{{old('email')}}">
-						<input class="input100 @error('email')is-invalid" @enderror type="email" name="email" id="email">
+                    <div class="wrap-input100" >
+						<input class="input100 @error('email') is-invalid @enderror" type="email" name="email" id="email">
 						<span class="focus-input100" data-placeholder="Email"></span>
                         @error('email')
                         <div class="invalid-feedback">
@@ -31,11 +31,11 @@
                         @enderror
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Enter password">
+					<div class="wrap-input100">
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
-						<input class="input100 @error('password')is-invalid" @enderror type="password" name="password" id="password">
+						<input class="input100 @error('password') is-invalid @enderror" type="password" name="password" id="password">
 						<span class="focus-input100" data-placeholder="Password"></span>
                         @error('password')
                         <div class="invalid-feedback">
@@ -58,7 +58,7 @@
 							Sudah punya akun?
 						</span>
 
-						<a class="txt2" href="/login">
+						<a class="txt2" href="/log">
 							Login
 						</a>
 					</div>

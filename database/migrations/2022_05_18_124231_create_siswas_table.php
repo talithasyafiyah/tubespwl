@@ -18,6 +18,7 @@ class CreateSiswasTable extends Migration
             $table->string('nama');
             $table->string('alamat');
             $table->char('no_hp', 12)->unique();
+            $table->bigInteger('saldo');
             $table->bigInteger('kelas_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('kelas_id')->references('kelas_id')->on('kelas');

@@ -1,62 +1,72 @@
-@extends('layout.main')
+@extends('layout.logreg')
 @section('title', 'Register')
 
 @section('content')
-    <div id="auth">
-        <div class="row h-100">
-            <div class="col-lg-5 col-12">
-                <div id="auth-left">
-                    <h1 class="text-center mb-2">Sign Up.</h1>
-                    <form action="/register" method="POST">
-                        @csrf
-                        <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" class="form-control form-control-xl @error('username')is-invalid" @enderror name="username" id="username" placeholder="Username" required value="{{old('username')}}">
-                            <div class="form-control-icon">
-                                <i class="bi bi-person"></i>
-                            </div>
-                            @error('username')
-                            <div class="invalid-feedback">
-                                {{$message}}
-                            </div>
-                            @enderror
-                        </div>
-                        <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="email" class="form-control form-control-xl @error('email')is-invalid" @enderror name="email" id="email" placeholder="Email" required value="{{old('email')}}">
-                            <div class="form-control-icon">
-                                <i class="bi bi-envelope"></i>
-                            </div>
-                            @error('email')
-                            <div class="invalid-feedback">
-                                {{$message}}
-                            </div>
-                            @enderror
-                        </div>
-                        <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="password" class="form-control form-control-xl @error('password')is-invalid" @enderror name="password" id="password" placeholder="Password" required>
-                            <div class="form-control-icon">
-                                <i class="bi bi-shield-lock"></i>
-                            </div>
-                            @error('password')
-                            <div class="invalid-feedback">
-                                {{$message}}
-                            </div>
-                            @enderror
-                        </div>
-                        <button class="btn btn-primary btn-block btn-lg shadow-lg mt-2">Sign Up</button>
-                    </form>
-                    <div class="text-center mt-4 text-lg fs-4">
-                        <p class="text-gray-600">Already have an account? <a href="/login"
-                                class="font-bold">Log
-                                in</a>.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-7 d-none d-lg-block">
-                <div id="auth-right">
+    <div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form" action="/register" action="POST">
+                    @csrf
+					<span class="login100-form-title p-b-48">
+						<img src="assets/images/logo.png" alt="" width="120">
+					</span>
 
-                </div>
-            </div>
-        </div>
+					<div class="wrap-input100 validate-input" data-validate = "Valid username is: a@b.c" value="{{old('username')}}">
+						<input class="input100 @error('username')is-invalid" @enderror type="text" name="username" id="username">
+						<span class="focus-input100" data-placeholder="Username"></span>
+                        @error('username')
+                        <div class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                        @enderror
+					</div>
 
-    </div>
+                    <div class="wrap-input100 validate-input"  data-validate = "Valid email is: a@b.c" required value="{{old('email')}}">
+						<input class="input100 @error('email')is-invalid" @enderror type="email" name="email" id="email">
+						<span class="focus-input100" data-placeholder="Email"></span>
+                        @error('email')
+                        <div class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                        @enderror
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<span class="btn-show-pass">
+							<i class="zmdi zmdi-eye"></i>
+						</span>
+						<input class="input100 @error('password')is-invalid" @enderror type="password" name="password" id="password">
+						<span class="focus-input100" data-placeholder="Password"></span>
+                        @error('password')
+                        <div class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                        @enderror
+					</div>
+
+					<div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button class="login100-form-btn">
+								Sign Up
+							</button>
+						</div>
+					</div>
+
+					<div class="text-center p-t-40">
+						<span class="txt1">
+							Sudah punya akun?
+						</span>
+
+						<a class="txt2" href="/login">
+							Login
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
 @endsection

@@ -20,6 +20,7 @@ class SiswasTableSeeder extends Seeder
                 'nama'=> "Talitha Syafiyah",
                 'alamat'=> "Jl. Dara",
                 'no_hp'=> '081260152610',
+                'saldo' => 150000,
                 'kelas_id'=> 11,
                 'user_id' => 1,
             ],
@@ -28,6 +29,7 @@ class SiswasTableSeeder extends Seeder
                 'nama'=> "Murniwati Siahaan",
                 'alamat'=> "Jl. Beo",
                 'no_hp'=> '081260155678',
+                'saldo' => 150000,
                 'kelas_id'=> 10,
                 'user_id' => 2,
                 
@@ -37,6 +39,7 @@ class SiswasTableSeeder extends Seeder
                 'nama'=> "Agnes Tryani Simbolon",
                 'alamat'=> "Jl. Merak",
                 'no_hp'=> '081260167548',
+                'saldo' => 150000,
                 'kelas_id'=> 8,
                 'user_id' => 3,
                 
@@ -46,6 +49,7 @@ class SiswasTableSeeder extends Seeder
                 'nama'=> "Dhani Dwi Septian",
                 'alamat'=> "Jl. Merpati",
                 'no_hp'=> '081260934567',
+                'saldo' => 150000,
                 'kelas_id'=> 7,
                 'user_id' => 4,
                 
@@ -55,6 +59,7 @@ class SiswasTableSeeder extends Seeder
                 'nama'=> "Muhammad Nurahman",
                 'alamat'=> "Jl. Rajawali",
                 'no_hp'=> '081263459023',
+                'saldo' => 150000,
                 'kelas_id'=> 5,
                 'user_id' => 5,
                 

@@ -21,19 +21,23 @@ use App\Http\Controllers\LandingController;
 */
 
 //Admin
-Route::get('dashAdmin', [AdminController::class, 'dashAdmin'])->name('admin.dashAdmin')->middleware('auth');
-Route::get('siswa', [AdminController::class, 'siswa'])->name('admin.siswa');
-Route::get('kelas', [AdminController::class, 'kelas'])->name('admin.kelas');
-Route::get('tabungan', [AdminController::class, 'tabungan'])->name('admin.tabungan');
-Route::get('transaksi', [AdminController::class, 'transaksi'])->name('admin.transaksi');
-Route::get('report', [AdminController::class, 'report'])->name('admin.report');
+Route::group(['middleware' => ['auth','ceklevel:Admin']], function() {
+    Route::get('dashAdmin', [AdminController::class, 'dashAdmin'])->name('admin.dashAdmin');
+    Route::get('siswa', [AdminController::class, 'siswa'])->name('admin.siswa');
+    Route::get('kelas', [AdminController::class, 'kelas'])->name('admin.kelas');
+    Route::get('tabungan', [AdminController::class, 'tabungan'])->name('admin.tabungan');
+    Route::get('transaksi', [AdminController::class, 'transaksi'])->name('admin.transaksi');
+    Route::get('report', [AdminController::class, 'report'])->name('admin.report');
+});
 
 //Siswa
-Route::get('dashSiswa', [SiswaController::class, 'dashSiswa'])->name('siswa.dashSiswa');
-Route::get('Siswa', [SiswaController::class, 'Siswa'])->name('siswa.siswa');
-Route::get('Tabungan', [SiswaController::class, 'Tabungan'])->name('siswa.tabungan');
-Route::get('Transaksi', [SiswaController::class, 'Transaksi'])->name('siswa.transaksi');
-Route::get('Report', [SiswaController::class, 'Report'])->name('siswa.report');
+Route::group(['middleware' => ['auth','ceklevel:Siswa']], function() {
+    Route::get('dashSiswa', [SiswaController::class, 'dashSiswa'])->name('siswa.dashSiswa');
+    Route::get('Siswa', [SiswaController::class, 'Siswa'])->name('siswa.siswa');
+    Route::get('Tabungan', [SiswaController::class, 'Tabungan'])->name('siswa.tabungan');
+    Route::get('Transaksi', [SiswaController::class, 'Transaksi'])->name('siswa.transaksi');
+    Route::get('Report', [SiswaController::class, 'Report'])->name('siswa.report');
+});
 
 //Login Register
 Route::get('/log', [LoginController::class, 'index'])->name('login')->middleware('guest');

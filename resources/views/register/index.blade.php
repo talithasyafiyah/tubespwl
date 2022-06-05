@@ -8,7 +8,7 @@
 				<form class="login100-form validate-form" action="/register" method="POST">
                     @csrf
 					<span class="login100-form-title p-b-48">
-						<img src="assets/images/logo.png" alt="" width="120">
+						<a href="/"><img src="assets/images/logo.png" alt="" width="120"></a>
 					</span>
 
 					<div class="wrap-input100" >

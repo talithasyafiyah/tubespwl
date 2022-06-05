@@ -8,7 +8,7 @@
 				<form action="/log" method="POST" class="login100-form validate-form">
 					@csrf
 					<span class="login100-form-title p-b-48">
-						<img src="assets/images/logo.png" alt="" width="120">
+						<a href="/"><img src="assets/images/logo.png" alt="" width="120"></a>
 					</span>
 					@if(session()->has('success'))
 					<div class="alert alert-warning alert-dismissible fade show" role="alert">

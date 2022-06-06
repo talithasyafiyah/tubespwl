@@ -9,7 +9,7 @@
                 <div class="page-title">
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>Tabungan</h3>
+                            <h3>Tabungan</h3> <a type="button" class="btn btn-outline-primary btn-sm mb-3"  href="/addtabungan"><i class="fa fa-plus-circle orange_color"></i> Tambah Tabungan </a>
                         </div>
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -23,6 +23,12 @@
                 </div>
                 <section class="section">
                     <div class="card">
+                        @if(session()->has('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{session('success')}}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        @endif
                         <div class="card-body">
                             <table class="table table-striped" id="table1">
                                 <thead>
@@ -46,8 +52,13 @@
                                         <td>{{$tabungan->nama_kelas}}</td>
                                         <td>Rp{{$tabungan->saldo}}</td>
                                         <td><button type='submit' name='btnUpdate' class='btn btn-primary btn-sm'><i class='fa fa-folder-open'></i></button></td>
-                                        <td><button type='submit' name='btnUpdate' class='btn btn-success btn-sm'><i class='fa fa-edit'></i></button></td>
-                                        <td><button type='submit' name='btnUpdate' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i></button></td>
+                                        <td><a href="{{route('tampiltabungan', $tabungan->tabungan_id)}}" type="button" class='btn btn-success btn-sm'><i class='fa fa-edit'></i></a></td>
+                                        <td>
+                                            <form action="/deletetabungan/{{$tabungan->tabungan_id}}" method="POST">
+                                                @method('delete')
+                                                <button type="submit" class='btn btn-danger btn-sm'><i class='fa fa-trash'></i></button>
+                                            </form>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -59,4 +70,11 @@
             </div>
         </div>
     </div>
+    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/vendors/apexcharts/apexcharts.js"></script>
+    <script src="assets/js/pages/dashboard.js"></script>
+
+    <script src="assets/js/main.js"></script>
 @endsection

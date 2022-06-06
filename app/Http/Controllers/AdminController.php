@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Siswa;
 use App\Models\Kelas;
+use App\Models\Tabungan;
 
 
 class AdminController extends Controller
@@ -128,5 +129,41 @@ class AdminController extends Controller
     public function report()
     {
         return view('admin.transaksi');
+    }
+
+    public function addtabungan()
+    {
+        $tabungans = \DB::table('tabungans')
+                    ->join('siswas', 'siswas.NISN', '=', 'tabungans.NISN')
+                    ->join('kelas', 'kelas.kelas_id', '=', 'tabungans.kelas_id')
+                    ->get();
+        return view('admin.addtabungan', compact('tabungans'));
+    }
+
+    public function inserttabungan(Request $request)
+    {
+        /* dd($request->all()); */
+        Tabungan::create($request->all());
+
+        return redirect()->route('admin.tabungan')->with('success', 'Berhasil menambah data');
+    }
+
+    public function tampiltabungan($id) {
+        $data = Tabungan::find($id);
+
+        return view('admin.tampiltabungan', compact('data'));
+    }
+
+    public function deletetabungan($id)
+    {
+        dd($id);
+        /* Tabungan::destroy($id);
+        
+        return back()->with('success', 'Berhasil menghapus data'); */
+
+        /* dd($id);
+        Tabungan::find($id)->delete();
+
+        return redirect(route('admin.tabungan'))->with('success', 'Berhasil menghapus data'); */
     }
 }

@@ -23,6 +23,7 @@ class CreateTabungansTable extends Migration
             $table->unsignedBigInteger('kelas_id');
             $table->foreign('NISN')->references('NISN')->on('siswas')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->foreign('kelas_id')->references('kelas_id')->on('kelas')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->timestamps();
         });
     }
 

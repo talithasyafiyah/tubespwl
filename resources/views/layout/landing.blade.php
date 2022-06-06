@@ -7,7 +7,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
-
+    <link rel="icon" type="image/png" href="landing/img/logo_pwl (1).png"/>
     <!-- Favicon -->
     <link href="landing/img/favicon.ico" rel="icon">
 

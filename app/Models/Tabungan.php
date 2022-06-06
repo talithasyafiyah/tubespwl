@@ -7,8 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tabungan extends Model
 {
+    protected $primaryKey = "tabungan_id";
+    protected $table = "tabungans";
     protected $fillable = [
-        'saldo',
+        'jlh_setoran',
+        'tgl_setoran',
+        'payment',
+        'no_rekening',
         'NISN',
         'kelas_id',
     ];

@@ -19,6 +19,7 @@ class CreateTabungansTable extends Migration
             $table->date('tgl_setoran');
             $table->string('payment')->nullable();
             $table->integer('no_rekening')->nullable();
+            $table->enum('status', ['accepted', 'pending', 'rejected'])->nullable();
             $table->char('NISN');
             $table->unsignedBigInteger('kelas_id');
             $table->foreign('NISN')->references('NISN')->on('siswas')->onUpdate('CASCADE')->onDelete('CASCADE');

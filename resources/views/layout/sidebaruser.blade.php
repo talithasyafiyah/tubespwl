@@ -25,26 +25,11 @@
                       </a>
                   </li>
 
-                  {{--<li class="sidebar-item {{ Request::is('kelas') ? 'active' : '' }}">
-                      <a href="/kelas" class='sidebar-link'>
-                          <i class="fa-solid fa-chalkboard-user"></i>
-                          <span>Kelas</span>
-                      </a>
-                  </li> --}}
-
-                  <li class="sidebar-item {{ Request::is('Tabungan') ? 'active' : '' }} || {{ Request::is('Transaksi') ? 'active' : '' }}  has-sub">
-                      <a href="#" class='sidebar-link'>
+                  <li class="sidebar-item {{ Request::is('Tabungan') ? 'active' : '' }}">
+                      <a href="/Tabungan" class='sidebar-link'>
                           <i class="fa-solid fa-hand-holding-dollar"></i>
-                          <span>Tabungan</span>
+                          <span>Menabung</span>
                       </a>
-                      <ul class="submenu {{ Request::is('Tabungan') ? 'active' : '' }} || {{ Request::is('Transaksi') ? 'active' : '' }}">
-                          <li class="submenu-item {{ Request::is('Tabungan') ? 'active' : '' }}">
-                              <a href="/Tabungan">Tabungan</a>
-                          </li>
-                          <li class="submenu-item {{ Request::is('Transaksi') ? 'active' : '' }}">
-                              <a href="/Transaksi">Transaksi</a>
-                          </li>
-                      </ul>
                   </li>
                   
                   <li class="sidebar-title">Other</li>

@@ -38,15 +38,14 @@ class RegisterController extends Controller
         $validatedData = $request->validate([
             'email' => 'required|email:dns|unique:users',
             'username' =>  'required|min:5|max:12|unique:users',
-            'password' => 'required|min:8|max:50'
+            'password' => 'required|min:8|max:50',
+            'level' => 'Siswa'
         ]);
 
     
         $validatedData['password'] = bcrypt($validatedData['password']);
 
         User::create($validatedData);
-
-
 
         return redirect('/log')->with('success', 'Registrasi berhasil, silakan login!');
     } 

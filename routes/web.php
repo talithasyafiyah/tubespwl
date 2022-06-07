@@ -2,13 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\TabunganController;
+use App\Http\Controllers\ConfirmController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,19 +28,18 @@ Route::group(['middleware' => ['auth','ceklevel:Admin']], function() {
     Route::get('kelas', [AdminController::class, 'kelas'])->name('admin.kelas');
 
     //tabungan
-    Route::get('tabungan', [AdminController::class, 'tabungan'])->name('admin.tabungan');
+    Route::get('/tabungan', [TabunganController::class, 'index'])->name('admin.tabungan');
     //add
-    Route::get('addtabungan', [AdminController::class, 'addtabungan'])->name('admin.addtabungan');
-    Route::post('/inserttabungan', [AdminController::class, 'inserttabungan'])->name('inserttabungan');
+    Route::get('/addtabungan', [TabunganController::class, 'create'])->name('admin.addtabungan');
+    Route::post('/inserttabungan', [TabunganController::class, 'store'])->name('inserttabungan');
     //update
-    Route::get('/tampiltabungan/{$id}', [AdminController::class, 'tampiltabungan'])->name('tampiltabungan');
-    //delete
-    
-    Route::get('transaksi', [AdminController::class, 'transaksi'])->name('admin.transaksi');
+    Route::get('/edittabungan/{id}', [TabunganController::class, 'edit'])->name('admin.edittabungan');
+    Route::put('/updatetabungan/{id}', [TabunganController::class, 'update'])->name('admin.updatetabungan');
+
+    Route::delete('/deletetabungan/{id}', [TabunganController::class, 'destroy'])->name('admin.delete');
+    Route::get('confirm', [ConfirmController::class, 'index'])->name('admin.confirm');
     Route::get('report', [AdminController::class, 'report'])->name('admin.report');
 });
-
-Route::delete('/deletetabungan/{$id}', [TabunganController::class, 'deletetabungan'])->name('deletetabungan');
 
 //Siswa
 Route::group(['middleware' => ['auth','ceklevel:Siswa']], function() {

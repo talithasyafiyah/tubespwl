@@ -46,7 +46,8 @@ Route::delete('/deletetabungan/{$id}', [TabunganController::class, 'deletetabung
 Route::group(['middleware' => ['auth','ceklevel:Siswa']], function() {
     Route::get('dashSiswa', [SiswaController::class, 'dashSiswa'])->name('siswa.dashSiswa');
     Route::get('Siswa', [SiswaController::class, 'Siswa'])->name('siswa.siswa');
-    Route::get('Tabungan', [SiswaController::class, 'Tabungan'])->name('siswa.tabungan');
+    Route::get('Tabungan', [SiswaController::class, 'Tabungan'])->name('siswa.tabungan'); //Read
+    Route::post('Tabungan/store', [SiswaController::class, 'store'])->name('siswa.simpan'); //Create
     Route::get('Transaksi', [SiswaController::class, 'Transaksi'])->name('siswa.transaksi');
     Route::get('Report', [SiswaController::class, 'Report'])->name('siswa.report');
 });
@@ -56,8 +57,8 @@ Route::get('/log', [LoginController::class, 'index'])->name('login')->middleware
 Route::post('/log', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::get('/register', [RegisterController::class, 'index'])->name('register');
-Route::post('/registrasi', [RegisterController::class, 'store']);
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store']);
 //Kerjaan Ku
 //Home
 //Migration (user, siswa, tabungan, kelas)

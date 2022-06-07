@@ -14,7 +14,15 @@ class Tabungan extends Model
         'tgl_setoran',
         'payment',
         'no_rekening',
-        'NISN',
+        'nisn',
         'kelas_id',
     ];
+    public $timestamps = false;
+
+    public function kelas(){
+        return $this->belongsTo(Kelas::class);
+    }
+    public function siswa(){
+        return $this->belongsTo(Siswa::class);
+    }
 }

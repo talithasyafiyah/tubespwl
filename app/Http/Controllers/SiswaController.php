@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Berita;
+use App\Models\Kelas;
+use App\Models\Siswa;
+use App\Models\Tabungan;
 
 class SiswaController extends Controller
 {
@@ -35,7 +38,40 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //yang bagian NONE
+        $request->validate([
+            'nisn'=>'required|max:10',
+            'nama'=> 'required|max:50',
+            'alamat'=>'required',
+            'no_hp'=>'required|max:13',
+            'saldo'=>'required',
+            'kelas_id'=>'required',
+            'user_id'=>'required',
+            'tgl_setoran'=>'required',
+            'jlh_setoran'=>'required',
+            'payment'=>'required',
+            'no_rekening'=>'required',
+        ]);
+
+        $siswa = new Siswa;
+        $siswa->nisn =$request->nisn;
+        $siswa->nama =$request->nama;
+        $siswa->alamat=$request->alamat;
+        $siswa->no_hp=$request->no_hp;
+        $siswa->saldo=$request->saldo;
+        $siswa->kelas_id=$request->kelas_id;
+        $siswa->user_id=$request->user_id;
+        $siswa->save();
+        
+        $tabungan = new Tabungan;
+        $tabungan->nisn=$request->nisn;
+        $tabungan->jlh_setoran=$request->jlh_setoran;
+        $tabungan->tgl_setoran=$request->tgl_setoran;
+        $tabungan->payment=$request->payment;
+        $tabungan->no_rekening=$request->no_rekening;
+        $tabungan->kelas_id=$request->kelas_id;
+        $tabungan->save();
+        return redirect('/Tabungan')->with('success', 'Berhasil menabung!!!!');
     }
 
     /**
@@ -98,7 +134,12 @@ class SiswaController extends Controller
 
     public function Tabungan()
     {
-        return view('siswa.tabungan');
+        $x = Kelas::all();
+        $tabungans = \DB::table('tabungans')
+                    ->join('siswas', 'siswas.NISN', '=', 'tabungans.NISN')
+                    ->join('kelas', 'kelas.kelas_id', '=', 'tabungans.kelas_id')
+                    ->get();
+        return view('siswa.tabungan', compact('tabungans', 'x'));
     }
 
     public function Transaksi()

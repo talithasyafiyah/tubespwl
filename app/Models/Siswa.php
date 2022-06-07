@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Siswa extends Model
 {
     protected $fillable = [
-        'NISN',
+        'nisn',
         'nama',
         'alamat',
         'no_hp',
+        'saldo',
         'kelas_id',
         'user_id',
     ];

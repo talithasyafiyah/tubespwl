@@ -15,10 +15,12 @@ class CreateDataSiswa extends Migration
     {
         Schema::create('data_siswa', function (Blueprint $table) {
             $table->char('NISN')->primary();
-            $table->varchar('nama');
-            $table->varchar('alamat');
+            $table->string('nama');
+            $table->string('alamat');
             $table->char('no_hp',12);
-            $table->bigInteger('saldo',20);
+            $table->bigInteger('saldo');
+            $table->bigInteger('kelas_id')->unsigned();
+            $table->unsignedBigInteger('user_id');
             $table->foreign('kelas_id',20)->references('kelas_id')->on('kelas')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
         });

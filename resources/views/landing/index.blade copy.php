@@ -34,7 +34,7 @@
                 </div>
                 <a href="#kontak" class="nav-item nav-link">Kontak</a>
             </div>
-            <a href="" class="btn rounded-0 py-4 px-lg-5 d-none d-lg-block">Daftar / Masuk<i class="fa fa-arrow-right ms-3"></i></a>
+            <a href="/register" class="btn rounded-0 py-4 px-lg-5 d-none d-lg-block">Daftar / Masuk<i class="fa fa-arrow-right ms-3"></i></a>
         </div>
     </nav>
     <!-- Navbar End -->

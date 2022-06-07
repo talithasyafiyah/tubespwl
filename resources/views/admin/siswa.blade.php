@@ -27,7 +27,6 @@
                             <table class="table table-striped" id="table1">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
                                         <th>NISN</th>
                                         <th>Nama</th>
                                         <th>Kelas</th>
@@ -37,11 +36,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php $i = 0 @endphp
-                                    @foreach ($siswas as $siswa)
+                                @foreach ($siswas as $siswa)
                                     <tr>
-                                    @php $i++ @endphp
-                                        <td>{{$i}}</td>
                                         <td>{{$siswa->NISN}}</td>
                                         <td>{{$siswa->nama}}</td>
                                         <td>{{$siswa->nama_kelas}}</td>

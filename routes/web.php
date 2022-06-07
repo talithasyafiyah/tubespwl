@@ -56,8 +56,8 @@ Route::get('/log', [LoginController::class, 'index'])->name('login')->middleware
 Route::post('/log', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store']);
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/registrasi', [RegisterController::class, 'store']);
 //Kerjaan Ku
 //Home
 //Migration (user, siswa, tabungan, kelas)

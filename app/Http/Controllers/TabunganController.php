@@ -17,6 +17,7 @@ class TabunganController extends Controller
         $tabungans = \DB::table('tabungans')
                     ->join('siswas', 'siswas.NISN', '=', 'tabungans.NISN')
                     ->join('kelas', 'kelas.kelas_id', '=', 'tabungans.kelas_id')
+                    ->where('status', 'accepted')
                     ->get();
         return view('admin.tabungan', compact('tabungans'));
     }

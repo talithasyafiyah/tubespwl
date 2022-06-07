@@ -49,12 +49,21 @@
                         
                         <li class="sidebar-title">Other</li>
 
+                        <li class="sidebar-item {{ Request::is('berita') ? 'active' : '' }}">
+                            <a href="/berita" class='sidebar-link'>
+                                <i class="fa-solid fa-newspaper"></i>
+                                <span>Berita</span>
+                            </a>
+                        </li>
+
                         <li class="sidebar-item {{ Request::is('report') ? 'active' : '' }}">
                             <a href="/report" class='sidebar-link'>
                                 <i class="fa-solid fa-print"></i>
                                 <span>Report</span>
                             </a>
                         </li>
+
+                        
 
                     </ul>
                 </div>

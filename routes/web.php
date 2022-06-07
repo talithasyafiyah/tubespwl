@@ -26,7 +26,8 @@ Route::group(['middleware' => ['auth','ceklevel:Admin']], function() {
     Route::get('dashAdmin', [AdminController::class, 'dashAdmin'])->name('admin.dashAdmin');
     Route::get('siswa', [AdminController::class, 'siswa'])->name('admin.siswa');
     Route::get('kelas', [AdminController::class, 'kelas'])->name('admin.kelas');
-
+    Route::get('berita', [AdminController::class, 'berita'])->name('admin.berita');
+    Route::get('/addberita', [TabunganController::class, 'create'])->name('admin.addtabungan');
     //tabungan
     Route::get('/tabungan', [TabunganController::class, 'index'])->name('admin.tabungan');
     //add
@@ -35,6 +36,9 @@ Route::group(['middleware' => ['auth','ceklevel:Admin']], function() {
     //update
     Route::get('/edittabungan/{id}', [TabunganController::class, 'edit'])->name('admin.edittabungan');
     Route::put('/updatetabungan/{id}', [TabunganController::class, 'update'])->name('admin.updatetabungan');
+    //konfirm
+    Route::put('/confirmAcc/{id}', [ConfirmController::class, 'confirmAcc'])->name('admin.confirm');
+    Route::put('/confirmReject/{id}', [ConfirmController::class, 'confirmReject'])->name('admin.confirm');
 
     Route::delete('/deletetabungan/{id}', [TabunganController::class, 'destroy'])->name('admin.delete');
     Route::get('confirm', [ConfirmController::class, 'index'])->name('admin.confirm');

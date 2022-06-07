@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('title', 'Konfirmasi')
+@section('title', 'Berita')
 
 @section('content')
     
@@ -9,13 +9,13 @@
                 <div class="page-title">
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>Konfirmasi Tabungan</h3>
+                            <h3>Berita</h3> <a type="button" class="btn btn-outline-primary btn-sm mb-3"  href="/addberita"><i class="fa fa-plus-circle orange_color"></i> Tambah Berita </a>
                         </div>
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Tabungan</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Berita</li>
                                 </ol>
                             </nav>
                         </div>
@@ -34,36 +34,30 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>NISN</th>
-                                        <th>Jumlah Setoran</th>
-                                        <th>Tanggal Setoran</th>
-                                        <th>Payment</th>
-                                        <th></th>
-                                        <th></th>
+                                        <th>Judul</th>
+                                        <th>Konten</th>
+                                        <th>Tanggal</th>
+                                        <th>Admin</th>
+                                        <th>Edit</th>
+                                        <th>Hapus</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @php $i = 0 @endphp
-                                    @foreach ($tabungans as $tabungan)
+                                    @foreach ($beritas as $berita)
                                     <tr>
                                     @php $i++ @endphp
                                         <td>{{$i}}</td>
-                                        <td>{{$tabungan->NISN}}</td>
-                                        <td>Rp{{$tabungan->jlh_setoran}}</td>
-                                        <td>{{$tabungan->tgl_setoran}}</td>
-                                        <td>{{$tabungan->payment}}</td>
+                                        <td>{{$berita->judul}}</td>
+                                        <td>{{$berita->konten}}</td>
+                                        <td>{{$berita->tanggal}}</td>
+                                        <td>{{$berita->username}}</td>
+                                        <td><a href="" type="submit" class='btn btn-success btn-sm'><i class='fa fa-edit'></i></a></td>
                                         <td>
-                                            <form action="{{url('/confirmAcc',$tabungan->tabungan_id)}}" method="POST">
-                                                @method('put')
+                                            <form action="" method="POST">
+                                                @method('delete')
                                                 @csrf
-                                                <button type="submit" class='btn btn-success btn-sm' onclick="return confirm('Apakah yakin ingin konfirmasi data ini?')"><i class="fa-solid fa-check"></i> Accept</button>
-                                            </form>
-                                        </td>
-                                        <td>
-                                            <form action="{{url('/confirmReject',$tabungan->tabungan_id)}}" method="POST">
-                                                @method('put')
-                                                @csrf
-                                                <button type="submit" class='btn btn-danger btn-sm' onclick="return confirm('Apakah yakin ingin menolak data ini?')"><i class="fa-solid fa-xmark"></i> Reject</button>
+                                                <button type="submit" class='btn btn-danger btn-sm' onclick="return confirm('Apakah yakin ingin menghapus data ini?')"><i class='fa fa-trash'></i></button>
                                             </form>
                                         </td>
                                     </tr>

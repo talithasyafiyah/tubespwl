@@ -15,7 +15,8 @@ class ConfirmController extends Controller
      */
     public function index()
     {
-        $tabungans = Tabungan::all();
+        $tabungans = Tabungan::all()
+                    ->where('status', 'pending');
         return view('admin.confirm', compact('tabungans'));
     }
 
@@ -87,11 +88,23 @@ class ConfirmController extends Controller
 
     public function confirmAcc($id)
     {
+        $data = Tabungan::find($id);
+ 
+        $data->status = 'accepted';
         
+        $data->save();
+
+        return redirect()->route('admin.confirm')->with('success', 'Data berhasil dikonfirmasi');
     }
 
     public function confirmReject($id)
     {
+        $data = Tabungan::find($id);
+ 
+        $data->status = 'rejected';
         
+        $data->save();
+
+        return redirect()->route('admin.confirm')->with('success', 'Data berhasil dikonfirmasi');
     }
 }

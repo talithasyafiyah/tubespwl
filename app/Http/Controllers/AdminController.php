@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Siswa;
 use App\Models\Kelas;
-use App\Models\Tabungan;
+use App\Models\Berita;
 
 
 class AdminController extends Controller
@@ -115,6 +115,19 @@ class AdminController extends Controller
     public function report()
     {
         return view('admin.confirm');
+    }
+
+    public function berita()
+    {
+        $beritas = \DB::table('beritas')
+                    ->join('users', 'users.id', '=', 'beritas.user_id')
+                    ->get();
+        return view('admin.berita', compact('beritas'));
+    }
+
+    public function addberita()
+    {
+        return view('admin.addberita');
     }
     
     public function deletetabungan($id)

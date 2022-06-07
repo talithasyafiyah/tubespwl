@@ -32,17 +32,17 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-item {{ Request::is('tabungan') ? 'active' : '' }} || {{ Request::is('transaksi') ? 'active' : '' }}  has-sub">
+                        <li class="sidebar-item {{ Request::is('tabungan') ? 'active' : '' }} || {{ Request::is('confirm') ? 'active' : '' }}  has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="fa-solid fa-hand-holding-dollar"></i>
                                 <span>Tabungan</span>
                             </a>
-                            <ul class="submenu {{ Request::is('tabungan') ? 'active' : '' }} || {{ Request::is('transaksi') ? 'active' : '' }}">
+                            <ul class="submenu {{ Request::is('tabungan') ? 'active' : '' }} || {{ Request::is('confirm') ? 'active' : '' }}">
                                 <li class="submenu-item {{ Request::is('tabungan') ? 'active' : '' }}">
                                     <a href="/tabungan">Tabungan</a>
                                 </li>
-                                <li class="submenu-item {{ Request::is('transaksi') ? 'active' : '' }}">
-                                    <a href="/transaksi">Transaksi</a>
+                                <li class="submenu-item {{ Request::is('confirm') ? 'active' : '' }}">
+                                    <a href="/confirm">Konfirmasi</a>
                                 </li>
                             </ul>
                         </li>
@@ -110,7 +110,7 @@
                                         </div>
                                         <div class="user-img d-flex align-items-center">
                                             <div class="avatar avatar-md">
-                                                <img src="assets/images/faces/1.jpg">
+                                                <img src="{{asset('assets/images/faces/1.jpg')}}">
                                             </div>
                                         </div>
                                     </div>

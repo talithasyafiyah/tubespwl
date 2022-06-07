@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Siswa;
-use App\Models\Kelas;
 use App\Models\Tabungan;
 
 
-class AdminController extends Controller
+class ConfirmController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +15,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        $tabungans = Tabungan::all();
+        return view('admin.confirm', compact('tabungans'));
     }
 
     /**
@@ -86,47 +85,13 @@ class AdminController extends Controller
         //
     }
 
-    //custom
-
-    public function dashAdmin()
+    public function confirmAcc($id)
     {
-        return view('admin.index');
-    }
-
-    public function siswa()
-    {
-        $siswas = \DB::table('siswas')
-                    ->join('kelas', 'kelas.kelas_id', '=', 'siswas.kelas_id')
-                    ->get();
-        return view('admin.siswa', compact('siswas'));
-    }
-
-    public function kelas()
-    {
-        $kelass = Kelas::all();
-        return view('admin.kelas', compact('kelass'));
-    }
-
-    public function confirm()
-    {
-        return view('admin.confirm');
-    }
-
-    public function report()
-    {
-        return view('admin.confirm');
-    }
-    
-    public function deletetabungan($id)
-    {
-        dd($id);
-        /* Tabungan::destroy($id);
         
-        return back()->with('success', 'Berhasil menghapus data'); */
+    }
 
-        /* dd($id);
-        Tabungan::find($id)->delete();
-
-        return redirect(route('admin.tabungan'))->with('success', 'Berhasil menghapus data'); */
+    public function confirmReject($id)
+    {
+        
     }
 }

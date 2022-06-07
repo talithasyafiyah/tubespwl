@@ -37,7 +37,6 @@
                                         <th>Nama</th>
                                         <th>Kelas</th>
                                         <th>Saldo</th>
-                                        <th>Detail</th>
                                         <th>Edit</th>
                                         <th>Hapus</th>
                                     </tr>
@@ -51,12 +50,12 @@
                                         <td>{{$tabungan->nama}}</td>
                                         <td>{{$tabungan->nama_kelas}}</td>
                                         <td>Rp{{$tabungan->saldo}}</td>
-                                        <td><button type='submit' name='btnUpdate' class='btn btn-primary btn-sm'><i class='fa fa-folder-open'></i></button></td>
-                                        <td><a href="{{route('tampiltabungan', $tabungan->tabungan_id)}}" type="button" class='btn btn-success btn-sm'><i class='fa fa-edit'></i></a></td>
+                                        <td><a href="{{ url('edittabungan', $tabungan->tabungan_id)}}" type="submit" class='btn btn-success btn-sm'><i class='fa fa-edit'></i></a></td>
                                         <td>
-                                            <form action="/deletetabungan/{{$tabungan->tabungan_id}}" method="POST">
+                                            <form action="{{url('/deletetabungan',$tabungan->tabungan_id)}}" method="POST">
                                                 @method('delete')
-                                                <button type="submit" class='btn btn-danger btn-sm'><i class='fa fa-trash'></i></button>
+                                                @csrf
+                                                <button type="submit" class='btn btn-danger btn-sm' onclick="return confirm('Apakah yakin ingin menghapus data ini?')"><i class='fa fa-trash'></i></button>
                                             </form>
                                         </td>
                                     </tr>

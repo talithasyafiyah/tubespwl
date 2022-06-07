@@ -18,7 +18,6 @@ class CreateConfirmsTable extends Migration
             $table->unsignedBigInteger('tabungan_id');
             $table->unsignedBigInteger('transaksi_id');
             $table->foreign('tabungan_id')->references('tabungan_id')->on('tabungans')->onUpdate('CASCADE')->onDelete('CASCADE');
-            $table->foreign('transaksi_id')->references('transaksi_id')->on('transaksis')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->timestamps();
         });
     }

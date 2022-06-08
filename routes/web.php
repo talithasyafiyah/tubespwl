@@ -57,6 +57,7 @@ Route::group(['middleware' => ['auth','ceklevel:Admin']], function() {
     Route::delete('/deletetabungan/{id}', [TabunganController::class, 'destroy'])->name('admin.delete');
     Route::get('confirm', [ConfirmController::class, 'index'])->name('admin.confirm');
     Route::get('report', [AdminController::class, 'report'])->name('admin.report');
+
 });
 
 //Siswa
@@ -67,6 +68,7 @@ Route::group(['middleware' => ['auth','ceklevel:Siswa']], function() {
     Route::post('Tabungan/store', [SiswaController::class, 'store'])->name('siswa.simpan'); //Create
     Route::get('Transaksi', [SiswaController::class, 'Transaksi'])->name('siswa.transaksi');
     Route::get('Report', [ReportController::class, 'index'])->name('siswa.report');
+    Route::get('/report/{id}',[ReportController::class, 'downloadPDF'])->name('download');
 });
 
 //Login Register

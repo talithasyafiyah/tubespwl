@@ -7,6 +7,7 @@ use App\Models\Tabungan;
 use App\Models\Siswa;
 use App\Models\Kelas;
 
+
 class TabunganController extends Controller
 {
     /**
@@ -108,4 +109,15 @@ class TabunganController extends Controller
 
         return redirect()->route('admin.tabungan')->with('success', 'Berhasil menghapus data');
     }
+    // public function pdfview(Request $request)
+    // {
+    //     $items = DB::table("items")->get();
+    //     view()->share('items',$items);
+
+
+    //     if($request->has('download')){
+    //         $pdf = PDF::loadView('pdfview');
+    //         return $pdf->download('pdfview.pdf');
+    //     }
+    // }
 }

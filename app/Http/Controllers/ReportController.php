@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Tabungan;
 use Illuminate\Http\Request;
 use Auth;
+use PDF;
+use App\Models\Siswa;
+use App\Models\Kelas;
 
 class ReportController extends Controller
 {
@@ -88,5 +91,15 @@ class ReportController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function downloadPDF($id) 
+    {
+        $tabungan = array(
+            'tabungan' =>Tabungan::find($id));
+        // $pdf = PDF::loadView('siswa.cetak')->with($tabungan);
+        $pdf = PDF::loadview('siswa.cetak',compact('tabungan'));
+        
+         return $pdf->download('tabungan.pdf');
     }
 }

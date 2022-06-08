@@ -9,13 +9,13 @@
                 <div class="page-title">
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>Drugs</h3>
+                            <h3>Report</h3>
                         </div>
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Drugs</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Report</li>
                                 </ol>
                             </nav>
                         </div>
@@ -32,8 +32,6 @@
                                         <th>Tanggal Setoran</th>
                                         <th>Payment</th>
                                         <th>Status</th>
-                                        <th></th>
-                                        <th></th>
                                     </tr>
                                 </thead>
                                 
@@ -47,8 +45,7 @@
                                         <td>{{$tabung->tgl_setoran}}</td>
                                         <td>{{$tabung->payment}}</td>
                                         <td>{{$tabung->status}}</td>
-                                        <td></td>
-                                        <td></td>
+                                        <td><a href="/report/{{$tabung->tabungan_id}}" target="_blank" class="btn btn-primary col-md-12">Cetak <i class="fas fa-print"></i></a></td>
                                     </tr>
                                     @endforeach
                                 </tbody>

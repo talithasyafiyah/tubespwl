@@ -39,7 +39,10 @@ class BeritaController extends Controller
     public function store(Request $request)
     {
       /* dd($request->all()); */
-      return $request->file('image')->store('post-images');
+    //   $validateData = $request->validate(
+    //       'image'=>'image|file|max:1024'
+    //   ) 
+    return $request->file('image')->store('post-images'); 
       Berita::create($request->all());
 
       return redirect()->route('admin.berita')->with('success', 'Berhasil menambah data');

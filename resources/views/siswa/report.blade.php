@@ -28,21 +28,31 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Drug Name</th>
-                                        <th>Generic Name</th>
-                                        <th>Brand Name</th>
+                                        <th>Jumlah Topup</th>
+                                        <th>Tanggal Setoran</th>
+                                        <th>Payment</th>
+                                        <th>Status</th>
                                         <th></th>
                                         <th></th>
                                     </tr>
                                 </thead>
+                                
                                 <tbody>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    @php $i = 0 @endphp
+                                    @foreach ($tabungan as $tabung)
+                                    <tr>
+                                    @php $i++ @endphp
+                                        <td>{{$i}}</td>
+                                        <td>{{$tabung->jlh_setoran}}</td>
+                                        <td>{{$tabung->tgl_setoran}}</td>
+                                        <td>{{$tabung->payment}}</td>
+                                        <td>{{$tabung->status}}</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    @endforeach
                                 </tbody>
+                                
                             </table>
                         </div>
                     </div>

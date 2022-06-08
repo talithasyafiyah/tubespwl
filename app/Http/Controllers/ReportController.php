@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tabungan;
 use Illuminate\Http\Request;
+use Auth;
 
 class ReportController extends Controller
 {
@@ -17,7 +18,9 @@ class ReportController extends Controller
         $tabungan = \DB::table('tabungans')
                     ->join('siswas', 'siswas.NISN', '=', 'tabungans.NISN')
                     ->join('kelas', 'kelas.kelas_id', '=', 'tabungans.kelas_id')
+                    ->where('user_id', '=', Auth::user()->id)
                     ->get();
+        /* $tabungan->user_id = Auth::user()->id; */
         return view('siswa.report',compact('tabungan'));
     }
 

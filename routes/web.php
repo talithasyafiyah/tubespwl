@@ -10,6 +10,8 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\TabunganController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\ConfirmController;
+use App\Http\Controllers\ReportController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -64,7 +66,7 @@ Route::group(['middleware' => ['auth','ceklevel:Siswa']], function() {
     Route::get('Tabungan', [SiswaController::class, 'Tabungan'])->name('siswa.tabungan'); //Read
     Route::post('Tabungan/store', [SiswaController::class, 'store'])->name('siswa.simpan'); //Create
     Route::get('Transaksi', [SiswaController::class, 'Transaksi'])->name('siswa.transaksi');
-    Route::get('Report', [SiswaController::class, 'Report'])->name('siswa.report');
+    Route::get('Report', [ReportController::class, 'index'])->name('siswa.report');
 });
 
 //Login Register

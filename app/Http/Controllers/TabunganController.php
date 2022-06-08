@@ -22,6 +22,8 @@ class TabunganController extends Controller
                     ->join('siswas', 'siswas.NISN', '=', 'tabungans.NISN')
                     ->where('status', 'accepted')
                     ->get();
+
+        /* dd($tabungans); */
         return view('admin.tabungan', compact('tabungans'));
     }
 

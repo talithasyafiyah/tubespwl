@@ -42,11 +42,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php $i = 0 @endphp
                                     @foreach ($tabungans as $tabungan)
                                     <tr>
-                                    @php $i++ @endphp
-                                        <td>{{$i}}</td>
+                                        <td>{{$loop->iteration}}</td>
                                         <td>{{$tabungan->nama}}</td>
                                         <td>Rp</td>
                                         <td><a href="{{ url('/showtabungan', $tabungan->tabungan_id)}}" type="submit" class='btn btn-primary btn-sm' data-bs-toggle="modal" data-bs-target="#inlineForm"><i class='fa fa-folder-open'></i></a></td>
@@ -75,37 +73,37 @@
                                                 <i data-feather="x"></i>
                                             </button>
                                         </div>
-                                        <form action="/showtabungan/{{$tabungan->tabungan_id}}" method="#">
+                                        <form action="/showtabungan/" method="#">
                                             <div class="modal-body">
                                                 <label>NISN: </label>
                                                 <div class="form-group">
                                                     <input type="text" name="NISN"
-                                                        class="form-control" value="{{$tabungan->NISN}}">
+                                                        class="form-control" value="">
                                                 </div>
                                                 <label>Nama: </label>
                                                 <div class="form-group">
                                                     <input type="text" name="nama"
-                                                        class="form-control" value="{{$tabungan->nama}}">
+                                                        class="form-control" value="">
                                                 </div>
                                                 <label>Jumlah Setoran: </label>
                                                 <div class="form-group">
                                                     <input type="text" name="jlh_setoran"
-                                                        class="form-control" value="{{$tabungan->jlh_setoran}}">
+                                                        class="form-control" value="">
                                                 </div>
                                                 <label>Tanggal Setoran: </label>
                                                 <div class="form-group">
                                                     <input type="text" name="tgl_setoran"
-                                                        class="form-control" value="{{$tabungan->tgl_setoran}}">
+                                                        class="form-control" value="">
                                                 </div>
                                                 <label>Payment: </label>
                                                 <div class="form-group">
                                                     <input type="text" name="payment"
-                                                        class="form-control" value="{{$tabungan->payment}}">
+                                                        class="form-control" value="">
                                                 </div>
                                                 <label>No Rekening: </label>
                                                 <div class="form-group">
                                                     <input type="text" name="no_rekening"
-                                                        class="form-control" value="{{$tabungan->no_rekening}}">
+                                                        class="form-control" value="">
                                                 </div>
                                             </div>
                                             <div class="modal-footer">

@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Tabungan;
 use App\Models\Siswa;
 use App\Models\Kelas;
 
-class TabunganController extends Controller
+class DatasiswaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,17 +15,7 @@ class TabunganController extends Controller
      */
     public function index()
     {
-        $siswa = \DB::table('siswas')->select('saldo');
-        $setoran = \DB::table('tabungans')->select('jlh_setoran');
-
-        $siswa->saldo += $setoran->jlh_setoran;
-
-        $tabungans = \DB::table('tabungans')
-                    ->join('siswas', 'siswas.NISN', '=', 'tabungans.NISN')
-                    ->join('kelas', 'kelas.kelas_id', '=', 'tabungans.kelas_id')
-                    ->where('status', 'accepted')
-                    ->get();
-        return view('admin.tabungan', compact('tabungans', 'saldo'));
+        //
     }
 
     /**
@@ -37,11 +26,10 @@ class TabunganController extends Controller
     public function create()
     {
         $kelass = Kelas::all();
-        $tabungans = \DB::table('tabungans')
-                    ->join('siswas', 'siswas.NISN', '=', 'tabungans.NISN')
-                    ->join('kelas', 'kelas.kelas_id', '=', 'tabungans.kelas_id')
+        $siswas = \DB::table('siswas')
+                    ->join('kelas', 'kelas.kelas_id', '=', 'siswas.kelas_id')
                     ->get();
-        return view('admin.addtabungan', compact('tabungans', 'kelass'));
+        return view('admin.addsiswa', compact('siswas', 'kelass'));
     }
 
     /**
@@ -52,10 +40,9 @@ class TabunganController extends Controller
      */
     public function store(Request $request)
     {
-        /* dd($request->all()); */
-        Tabungan::create($request->all());
+        Siswa::create($request->all());
 
-        return redirect()->route('admin.tabungan')->with('success', 'Berhasil menambah data');
+        return redirect()->route('admin.siswa')->with('success', 'Berhasil menambah data');
     }
 
     /**
@@ -77,8 +64,9 @@ class TabunganController extends Controller
      */
     public function edit($id)
     {
-        $data = Tabungan::find($id);
-        return view('admin.edittabungan', compact('data'));
+        $kelass = Kelas::all();
+        $data = Siswa::find($id);
+        return view('admin.editsiswa', compact('data', 'kelass'));
     }
 
     /**
@@ -90,10 +78,10 @@ class TabunganController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Tabungan::find($id);
+        $data = Siswa::find($id);
         $data->update($request->all());
 
-        return redirect()->route('admin.tabungan')->with('success', 'Data berhasil diupdate');
+        return redirect()->route('admin.siswa')->with('success', 'Data berhasil diupdate');
     }
 
     /**
@@ -104,8 +92,8 @@ class TabunganController extends Controller
      */
     public function destroy($id)
     {
-        Tabungan::destroy($id);
+        Siswa::destroy($id);
 
-        return redirect()->route('admin.tabungan')->with('success', 'Berhasil menghapus data');
+        return redirect()->route('admin.siswa')->with('success', 'Berhasil menghapus data');
     }
 }

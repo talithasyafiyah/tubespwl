@@ -20,7 +20,7 @@ class CreateSiswasTable extends Migration
             $table->char('no_hp', 12)->unique();
             $table->bigInteger('saldo');
             $table->bigInteger('kelas_id')->unsigned();
-            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreign('kelas_id')->references('kelas_id')->on('kelas');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

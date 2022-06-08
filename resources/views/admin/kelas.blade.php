@@ -23,13 +23,18 @@
                 </div>
                 <section class="section">
                     <div class="card">
+                        @if(session()->has('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{session('success')}}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        @endif
                         <div class="card-body">
                             <table class="table table-striped" id="table1">
                                 <thead>
                                     <tr>
                                         <th>No</th>
                                         <th>Nama Kelas</th>
-                                        <th>Edit</th>
                                         <th>Hapus</th>
                                     </tr>
                                 </thead>
@@ -40,8 +45,13 @@
                                     @php $i++ @endphp
                                         <td>{{$i}}</td>
                                         <td>{{$kelas->nama_kelas}}</td>
-                                        <td><button type='submit' name='btnUpdate' class='btn btn-success btn-sm'><i class='fa fa-edit'></i></button></td>
-                                        <td><button type='submit' name='btnUpdate' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i></button></td>
+                                        <td>
+                                            <form action="{{url('/deletekelas',$kelas->kelas_id)}}" method="POST">
+                                                @method('delete')
+                                                @csrf
+                                                <button type="submit" class='btn btn-danger btn-sm' onclick="return confirm('Apakah yakin ingin menghapus data ini?')"><i class='fa fa-trash'></i></button>
+                                            </form>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>

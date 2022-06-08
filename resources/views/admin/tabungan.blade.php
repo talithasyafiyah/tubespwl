@@ -49,7 +49,7 @@
                                         <td>{{$i}}</td>
                                         <td>{{$tabungan->nama}}</td>
                                         <td>{{$tabungan->nama_kelas}}</td>
-                                        <td>Rp{{$tabungan->saldo}}</td>
+                                        <td>Rp{{}}</td>
                                         <td><a href="{{ url('edittabungan', $tabungan->tabungan_id)}}" type="submit" class='btn btn-success btn-sm'><i class='fa fa-edit'></i></a></td>
                                         <td>
                                             <form action="{{url('/deletetabungan',$tabungan->tabungan_id)}}" method="POST">

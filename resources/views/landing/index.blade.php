@@ -74,56 +74,6 @@
     </div>
     <!-- Carousel End -->
 
-
-    <!-- Feature Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="row g-5" >
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="d-flex align-items-center mb-4"  style="background-color: #f7ca7c">
-                        <div class="btn-lg-square rounded-circle me-3">
-                            <i class="fa fa-users text-white"></i>
-                        </div>
-                        <h1 class="mb-0" data-toggle="counter-up">1135</h1>
-                    </div>
-                    <h5 class="mb-3">Total Murid</h5>
-                    <span>Dipercaya orang tua murid sebagat tempat menimbah ilmu anak mereka.</span>
-                </div>
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s" >
-                    <div class="d-flex align-items-center mb-4"  style="background-color: #f7ca7c">
-                        <div class="btn-lg-square  rounded-circle me-3">
-                            <i class="fa fa-check text-white"></i>
-                        </div>
-                        <h1 class="mb-0" data-toggle="counter-up">57</h1>
-                    </div>
-                    <h5 class="mb-3">Pengajar terbaik</h5>
-                    <span>50 pengajar lebih yang sudah terakreditasi sangat baik.</span>
-                </div>
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="d-flex align-items-center mb-4" style="background-color: #f7ca7c">
-                        <div class="btn-lg-square  rounded-circle me-3">
-                            <i class="fa fa-award text-white"></i>
-                        </div>
-                        <h1 class="mb-0" data-toggle="counter-up">259</h1>
-                    </div>
-                    <h5 class="mb-3">Prestasi Akademik</h5>
-                    <span>Prestasi para murid terbaik dari segi akademik.</span>
-                </div>
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
-                    <div class="d-flex align-items-center mb-4" style="background-color: #f7ca7c">
-                        <div class="btn-lg-square  rounded-circle me-3">
-                            <i class="fa fa-users-cog text-white"></i>
-                        </div>
-                        <h1 class="mb-0" data-toggle="counter-up">314</h1>
-                    </div>
-                    <h5 class="mb-3">Prestasi Non Akademik</h5>
-                    <span>Prestasi dari para murid terbaik dari segi non akademik</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Feature Start --> -->
-
 <a href="" id="informasi"></a>
     <!-- Service Start -->
     <div class="container-xxl py-5" >
@@ -282,12 +232,6 @@
             </div>
             <div class="row mt-n2 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="col-12 text-center">
-                    <ul class="list-inline mb-5" id="portfolio-flters">
-                        <li class="mx-2 active" data-filter="*">All</li>
-                        <li class="mx-2" data-filter=".first">Seputar Sekolah</li>
-                        <li class="mx-2" data-filter=".second">Tentang Pendidikan</li>
-                        <li class="mx-2" data-filter=".third">Siswa Berprestasi</li>
-                    </ul>
                 </div>
             </div>
             <div class="row g-4 portfolio-container wow fadeInUp" data-wow-delay="0.5s">
@@ -324,11 +268,9 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item rounded overflow-hidden">
                         <div class="d-flex">
-                            <img class="img-fluid w-75" src="landing/img/team-1.jpg" alt="">
+                            <img class="img-fluid w-75" src="landing/img/talitha.jpg" alt="">
                             <div class="team-social w-25">
-                                <a class="btn btn-lg-square rounded-circle mt-3" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-lg-square rounded-circle mt-3" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-lg-square rounded-circle mt-3" href=""><i class="fab fa-instagram"></i></a>
+                                <a class="btn btn-lg-square rounded-circle mt-3" target="_blank" href="https://instagram.com/talithasfyh/"><i class="fab fa-instagram"></i></a>
                             </div>
                         </div>
                         <div class="p-4">

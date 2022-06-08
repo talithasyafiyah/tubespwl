@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Siswa extends Model
 {
+    protected $primaryKey = "NISN";
     protected $fillable = [
-        'nisn',
+        'NISN',
         'nama',
         'alamat',
         'no_hp',

@@ -8,6 +8,9 @@
     <link rel="icon" type="image/png" href="{{asset('landing/img/logo_pwl (1).png')}}"/>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' type='text/javascript'></script>
+
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.css')}}">

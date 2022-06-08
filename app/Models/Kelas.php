@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kelas extends Model
 {
+    protected $primaryKey = "kelas_id";
     protected $fillable = [
         'nama_kelas'
     ];

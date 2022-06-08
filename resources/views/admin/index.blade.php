@@ -23,7 +23,7 @@
                                                 </div>
                                                 <div class="col-md-8">
                                                     <h6 class="text-muted font-semibold">Siswa</h6>
-                                                    <h6 class="font-extrabold mb-0">20</h6>
+                                                    <h6 class="font-extrabold mb-0">{{$siswa}}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -40,7 +40,7 @@
                                                 </div>
                                                 <div class="col-md-8">
                                                     <h6 class="text-muted font-semibold">Kelas</h6>
-                                                    <h6 class="font-extrabold mb-0">3</h6>
+                                                    <h6 class="font-extrabold mb-0">{{$kelas}}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -57,7 +57,7 @@
                                                 </div>
                                                 <div class="col-md-8">
                                                     <h6 class="text-muted font-semibold">Data Tabungan</h6>
-                                                    <h6 class="font-extrabold mb-0">40</h6>
+                                                    <h6 class="font-extrabold mb-0">{{$tabungan}}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -73,8 +73,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-8">
-                                                    <h6 class="text-muted font-semibold">Saldo</h6>
-                                                    <h6 class="font-extrabold mb-0">Rp100.000</h6>
+                                                    <h6 class="text-muted font-semibold">Total Saldo</h6>
+                                                    <h6 class="font-extrabold mb-0">Rp{{$saldo}}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -85,7 +85,7 @@
                                 <div class="col-12 col-lg-12">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h4>Data Transaksi</h4>
+                                            <h4>Grafik Tabungan</h4>
                                         </div>
                                         <div>
                                             <canvas id="myChart" class="ps-5 pe-5 pb-5"></canvas>
@@ -99,7 +99,10 @@
             </div>
         </div>
     </div>
-
+    <script>
+        var _ydata = JSON.parse('{!! json_encode($months) !!}');
+        var _xdata = JSON.parse('{!! json_encode($monthCount) !!}');
+    </script>
     <script>
     const labels = [
         'January',
@@ -111,17 +114,17 @@
     ];
 
     const data = {
-        labels: labels,
+        labels: _ydata,
         datasets: [{
         label: 'Tabungan',
         backgroundColor: 'rgb(67, 94, 190)',
         borderColor: 'rgb(67, 94, 190)',
-        data: [0, 10, 5, 2, 20, 30, 45],
+        data: _xdata,
         }]
     };
 
     const config = {
-        type: 'line',
+        type: 'bar',
         data: data,
         options: {}
     };

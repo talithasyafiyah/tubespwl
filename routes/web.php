@@ -12,6 +12,7 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\ConfirmController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\DatasiswaController;
+use App\Http\Controllers\KelasController;
 
 
 /*
@@ -35,27 +36,29 @@ Route::group(['middleware' => ['auth','ceklevel:Admin']], function() {
     Route::get('/editsiswa/{id}', [DatasiswaController::class, 'edit'])->name('admin.editsiswa');
     Route::put('/updatesiswa/{id}', [DatasiswaController::class, 'update'])->name('admin.updatesiswa');
     Route::delete('/deletesiswa/{id}', [DatasiswaController::class, 'destroy'])->name('admin.deletesiswa');
+    
     //kelas
     Route::get('kelas', [AdminController::class, 'kelas'])->name('admin.kelas');
+    Route::get('/addkelas', [KelasController::class, 'create'])->name('admin.addkelas');
+    Route::post('/insertkelas', [KelasController::class, 'store'])->name('insertkelas');
     Route::delete('/deletekelas/{id}', [AdminController::class, 'deletekelas'])->name('admin.deletekelas');
+    Route::get('/editkelas/{id}', [KelasController::class, 'edit'])->name('admin.editkelas');
+    Route::put('/updatekelas/{id}', [KelasController::class, 'update'])->name('admin.updatekelas');
     //berita
     Route::get('berita', [AdminController::class, 'berita'])->name('admin.berita');
-    //add
     Route::get('/addberita', [BeritaController::class, 'create'])->name('admin.addberita');
     Route::post('/insertberita', [BeritaController::class, 'store'])->name('insertberita');
     //tabungan
     Route::get('/tabungan', [TabunganController::class, 'index'])->name('admin.tabungan');
-    //add
     Route::get('/addtabungan', [TabunganController::class, 'create'])->name('admin.addtabungan');
     Route::post('/inserttabungan', [TabunganController::class, 'store'])->name('inserttabungan');
-    //update
     Route::get('/edittabungan/{id}', [TabunganController::class, 'edit'])->name('admin.edittabungan');
     Route::put('/updatetabungan/{id}', [TabunganController::class, 'update'])->name('admin.updatetabungan');
+    Route::put('/showtabungan/{id}', [TabunganController::class, 'show'])->name('admin.showtabungan');
+    Route::delete('/deletetabungan/{id}', [TabunganController::class, 'destroy'])->name('admin.delete');
     //konfirm
     Route::put('/confirmAcc/{id}', [ConfirmController::class, 'confirmAcc']);
     Route::put('/confirmReject/{id}', [ConfirmController::class, 'confirmReject']);
-
-    Route::delete('/deletetabungan/{id}', [TabunganController::class, 'destroy'])->name('admin.delete');
     Route::get('confirm', [ConfirmController::class, 'index'])->name('admin.confirm');
     Route::get('report', [AdminController::class, 'report'])->name('admin.report');
 });

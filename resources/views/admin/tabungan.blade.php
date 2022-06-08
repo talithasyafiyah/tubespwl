@@ -49,7 +49,7 @@
                                         <td>{{$i}}</td>
                                         <td>{{$tabungan->nama}}</td>
                                         <td>Rp</td>
-                                        <td><button type="submit" class='btn btn-primary btn-sm' data-bs-toggle="modal" data-bs-target="#inlineForm"><i class='fa fa-folder-open'></i></button></td>
+                                        <td><a href="{{ url('/showtabungan', $tabungan->tabungan_id)}}" type="submit" class='btn btn-primary btn-sm' data-bs-toggle="modal" data-bs-target="#inlineForm"><i class='fa fa-folder-open'></i></a></td>
                                         <td><a href="{{ url('edittabungan', $tabungan->tabungan_id)}}" type="submit" class='btn btn-success btn-sm'><i class='fa fa-edit'></i></a></td>
                                         <td>
                                             <form action="{{url('/deletetabungan',$tabungan->tabungan_id)}}" method="POST">
@@ -75,7 +75,7 @@
                                                 <i data-feather="x"></i>
                                             </button>
                                         </div>
-                                        <form action="#">
+                                        <form action="/showtabungan/{{$tabungan->tabungan_id}}" method="#">
                                             <div class="modal-body">
                                                 <label>NISN: </label>
                                                 <div class="form-group">

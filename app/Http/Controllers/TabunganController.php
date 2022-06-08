@@ -61,7 +61,7 @@ class TabunganController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Tabungan::find($id);
     }
 
     /**

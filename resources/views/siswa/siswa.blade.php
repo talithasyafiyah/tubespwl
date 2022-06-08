@@ -5,48 +5,122 @@
     
 @include('layout.sidebaruser')
             <div id="main-content">
-                 <div class="page-heading">
-                <div class="page-title">
-                    <div class="row">
-                        <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>Biodata Siswa</h3>
-                        </div>
-                        <div class="col-12 col-md-6 order-md-2 order-first">
-                            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Drugs</li>
-                                </ol>
-                            </nav>
+                <div class="page-heading">
+                    <div class="page-title">
+                        <div class="row">
+                            <div class="col-12 col-md-6 order-md-1 order-last">
+                                <h3>Data Siswa</h3>
+                            </div>
+                            <div class="col-12 col-md-6 order-md-2 order-first">
+                                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Data Siswa</li>
+                                    </ol>
+                                </nav>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <section class="section">
                     <div class="card">
                         <div class="card-body">
-                        <form>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">NISN</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1">
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Nama</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1">
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Alamat</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1">
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">No hp</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1">
-  </div>
-</form>
-                            
+                            <h4 style="text-align: center">Tabungan Saya</h4>
+                            <br>
+                            <table class="table table-bordered table-hover" style="text-align: center; border:black">
+                                <thead style="background-color: rgb(220, 240, 248)">
+                                <tr>
+                                    <th>ID.</th>
+                                    <th>Tanggal Setoran</th>
+                                    <th>Jumlah Setoran</th>
+                                    <th>Payment</th>
+                                    <th>No.Rekening</th>
+                                    <th>Status</th>
+                                </tr>
+                                </thead>
+                                //percobaan untuk akun siswa : Murni
+                                // misal status ==pending , NISN manual
+                                @foreach ($x as $tabungan)
+                                <tbody>
+                                <tr>
+                                    @if ( $tabungan['NISN']=='0040234566' && $tabungan['status'] == 'pending')
+                                        <td>{{ $tabungan->tabungan_id }}</td>
+                                        <td>{{ $tabungan->tgl_setoran }}</td>
+                                        <td>{{ $tabungan->jlh_setoran }}</td>
+                                        <td>{{ $tabungan->payment }}</td>
+                                        <td>{{ $tabungan->no_rekening }}</td>
+                                        <td>{{ $tabungan->status }}</td>
+                                    @else
+                                </tr>
+                                </tbody>
+                              
+                                @endif
+                                @endforeach
+                            </table>
                         </div>
                     </div>
-                </section>
-            </div>
+                    <section class="section">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 style="text-align: center">Profil Saya</h4>
+                                <br>
+                                @auth
+                             
+                                <div class="row mb-3">
+                                    <label for="id" class="col-sm-4 col-form-label col-form-label-lg">ID</label>
+                                    <div class="col-sm-8">
+                                    <input type="number" class="form-control form-control-lg" placeholder="{{auth()->user()->id }}" id="id" readonly>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="nisn" class="col-sm-4 col-form-label col-form-label-lg">NISN</label>
+                                    <div class="col-sm-8">
+                                    <input type="number" class="form-control form-control-lg" placeholder="{{ $data->nisn }}" id="nisn" readonly>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="nama" class="col-sm-4 col-form-label col-form-label-lg">Nama</label>
+                                    <div class="col-sm-8">
+                                    <input type="text" class="form-control form-control-lg" placeholder="{{ $data->nama }}" id="nama"readonly>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="kelas_id" class="col-sm-4 col-form-label col-form-label-lg">Kelas</label>
+                                    <div class="col-sm-8">
+                                    <input type="text" class="form-control form-control-lg" placeholder="{{ $data->kelas_id }}" id="kelas_id"readonly>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="alamat" class="col-sm-4 col-form-label col-form-label-lg">Alamat</label>
+                                    <div class="col-sm-8">
+                                    <input type="text" class="form-control form-control-lg" placeholder="{{ $data->alamat }}" id="alamat"  readonly>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="no_hp" class="col-sm-4 col-form-label col-form-label-lg">No HP</label>
+                                    <div class="col-sm-8">
+                                    <input type="number" class="form-control form-control-lg" placeholder="{{ $data->no_hp }}" id="no_hp" readonly>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="saldo" class="col-sm-4 col-form-label col-form-label-lg">Saldo</label>
+                                    <div class="col-sm-8">
+                                    <input type="email" class="form-control form-control-lg" placeholder="{{ $data->saldo }}" id="saldo"  readonly>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row mb-1">
+                                    <a type="button" class="btn btn-outline-primary btn-lg mb-1"  href=""><i class="fa-solid fa-pen-to-square"></i> Edit Profil</a>
+                                </div>
+                            
+                                @endauth  
+                                
+                            </div>
+                            
+                        </div>
+                        
+                    </section>
+                    
+                    
+                </div>
             </div>
         </div>
     </div>

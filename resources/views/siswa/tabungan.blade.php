@@ -30,7 +30,7 @@
                     </div>
                     @endif
                         <div class="card-content">
-                            <table class="table table-striped" id="table1">
+                            {{-- <table class="table table-striped" id="table1">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -57,7 +57,7 @@
                                     </tr>
                                     @endforeach
                                 </tbody>
-                            </table>
+                            </table> --}}
                             <div class="card-body">
                                 <form class="form form-horizontal" method="POST" action="{{ route('siswa.simpan') }}">
                                     @csrf
@@ -75,7 +75,7 @@
                                                     </div>
                                                     @enderror
                                             </div>
-                                            <div class="col-md-4">
+                                            {{-- <div class="col-md-4">
                                                 <label for="nama">Nama</label>
                                             </div>
                                             <div class="col-md-8 form-group">
@@ -86,8 +86,8 @@
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
-                                            </div>
-                                            <div class="col-md-4">
+                                            </div> --}}
+                                            {{-- <div class="col-md-4">
                                                 <label for="alamat">Alamat</label>
                                             </div>
                                             <div class="col-md-8 form-group">
@@ -98,8 +98,8 @@
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
-                                            </div>
-                                            <div class="col-md-4">
+                                            </div> --}}
+                                            {{-- <div class="col-md-4">
                                                 <label for="no_hp">Nomor HP</label>
                                             </div>
                                             <div class="col-md-8 form-group">
@@ -110,8 +110,8 @@
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
-                                            </div>
-                                            <div class="col-md-4">
+                                            </div> --}}
+                                            {{-- <div class="col-md-4">
                                                 <label for="saldo">Saldo</label>
                                             </div>
                                             <div class="col-md-8 form-group">
@@ -122,7 +122,7 @@
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
-                                            </div>
+                                            </div> --}}
                                             <div class="col-md-4">
                                                 <label for="kelas_id" >Kelas</label>
                                             </div>
@@ -135,16 +135,41 @@
                                                         @else
                                                         <option value="{{ $tabungan->kelas_id }}">{{ $tabungan->nama_kelas }}</option>
                                                         @endif
-                                                        @endforeach
+                                                    @endforeach
                                                 </select>    
                                             </div>
-                                            <div class="col-md-4">
+                                            {{-- <div class="col-md-4">
                                                 <label for="user_id">User ID</label>
                                             </div>
                                             <div class="col-md-8 form-group">
                                                 <input type="number" id="user_id" class="form-control @error('user_id') is-invalid @enderror"
                                                     name="user_id" placeholder="User ID" value="{{ old('user_id') }}">
                                                     @error('user_id')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                            </div> --}}
+                                            
+                                            <div class="col-md-4">
+                                                <label for="tgl_setoran">Tanggal Setoran</label>
+                                            </div>
+                                            <div class="col-md-8 form-group">
+                                                <input type="date" id="tgl_setoran" class="form-control @error('tgl_setoran') is-invalid @enderror"
+                                                    name="tgl_setoran" placeholder="Tanggal Setoran" value="{{ old('tgl_setoran') }}">
+                                                    @error('tgl_setoran')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="jlh_setoran">Jumlah Setoran</label>
+                                            </div>
+                                            <div class="col-md-8 form-group">
+                                                <input type="text" id="jlh_setoran" class="form-control @error('jlh_setoran') is-invalid @enderror"
+                                                    name="jlh_setoran" placeholder="Jumlah Setoran" value="{{ old('jlh_setoran') }}">
+                                                    @error('jlh_setoran')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
                                                     </div>
@@ -173,31 +198,8 @@
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
-                                            </div> 
-                                            <div class="col-md-4">
-                                                <label for="tgl_setoran">Tanggal Setoran</label>
                                             </div>
-                                            <div class="col-md-8 form-group">
-                                                <input type="date" id="tgl_setoran" class="form-control @error('tgl_setoran') is-invalid @enderror"
-                                                    name="tgl_setoran" placeholder="Tanggal Setoran" value="{{ old('tgl_setoran') }}">
-                                                    @error('tgl_setoran')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                    @enderror
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label for="jlh_setoran">Jumlah Setoran</label>
-                                            </div>
-                                            <div class="col-md-8 form-group">
-                                                <input type="text" id="jlh_setoran" class="form-control @error('jlh_setoran') is-invalid @enderror"
-                                                    name="jlh_setoran" placeholder="Jumlah Setoran" value="{{ old('jlh_setoran') }}">
-                                                    @error('jlh_setoran')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                    @enderror
-                                            </div> 
+                                           
                                             <div class="col-sm-12 d-flex justify-content-end">
                                                 <button type="submit"
                                                     class="btn btn-primary me-1 mb-1"><i class="fa-solid fa-hand-holding-dollar pe-4"></i>Menabung</button>

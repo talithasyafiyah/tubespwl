@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    
+    Ini Test 2
 </body>
 </html>

@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\TabunganController;
+use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\ConfirmController;
 
 /*
@@ -26,8 +27,11 @@ Route::group(['middleware' => ['auth','ceklevel:Admin']], function() {
     Route::get('dashAdmin', [AdminController::class, 'dashAdmin'])->name('admin.dashAdmin');
     Route::get('siswa', [AdminController::class, 'siswa'])->name('admin.siswa');
     Route::get('kelas', [AdminController::class, 'kelas'])->name('admin.kelas');
+    //berita
     Route::get('berita', [AdminController::class, 'berita'])->name('admin.berita');
-    Route::get('/addberita', [TabunganController::class, 'create'])->name('admin.addberita');
+    //add
+    Route::get('/addberita', [BeritaController::class, 'create'])->name('admin.addberita');
+    Route::post('/insertberita', [BeritaController::class, 'store'])->name('insertberita');
     //tabungan
     Route::get('/tabungan', [TabunganController::class, 'index'])->name('admin.tabungan');
     //add

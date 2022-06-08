@@ -20,6 +20,7 @@ class CreateBeritasTable extends Migration
             $table->longText('konten');
             $table->date('tanggal');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->timestamps();
         });
     }
 

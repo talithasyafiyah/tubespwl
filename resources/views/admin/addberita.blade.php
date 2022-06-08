@@ -24,57 +24,50 @@
                 <section class="section">
                     <div class="card">
                         <div class="card-body">
-                            <form action="/inserttabungan" method="POST" enctype="multipart/form-data" class="form form-horizontal">
+                            <form action="/insertberita" method="POST" enctype="multipart/form-data" class="form form-horizontal">
                                 @csrf
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <label>NISN</label>
+                                            <label>User id</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            <input type="text" id="NISN" class="form-control"
-                                                name="NISN" placeholder="NISN">
+                                            <input type="text" id="user_id" class="form-control"
+                                                name="user_id" placeholder="User_id">
                                         </div>
                                         <div class="col-md-4">
-                                            <label>Kelas ID</label>
+                                            <label>Judul</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            
-                                            <select name="drug_id" class="form-select" id="basicSelect">
-                                                @foreach ($tabungans as $tabungan)
-                                                <option value="{{$tabungan->kelas_id}}">{{$tabungan->kelas_id}}</option>
-                                                @endforeach
-                                            </select>
-                                            
+                                            <input type="text" id="judul" class="form-control"
+                                                name="judul" placeholder="Judul">
                                         </div>
                                         <div class="col-md-4">
-                                            <label>Jumlah Setoran</label>
+                                            <label>Konten</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            <input type="number" id="jlh_setoran" class="form-control"
-                                                name="jlh_setoran" placeholder="Jumlah Setoran">
+                                            <input type="text" id="konten" class="form-control"
+                                                name="konten" placeholder="Konten">
                                         </div>
                                         <div class="col-md-4">
-                                            <label>Tanggal Setoran</label>
+                                            <label>Tanggal</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            <input type="date" id="tgl_setoran" class="form-control"
-                                                name="tgl_setoran" placeholder="Tanggal Setoran">
+                                            <input type="date" id="tanggal" class="form-control"
+                                                name="tanggal" placeholder="Tanggal">
                                         </div>
                                         <div class="col-md-4">
-                                            <label>Payment</label>
+                                            <label>Admin</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            <input type="text" id="payment" class="form-control"
-                                                name="payment" placeholder="Payment">
+                                            <input type="text" id="admin" class="form-control"
+                                                name="admin" placeholder="Admin">
                                         </div>
-                                        <div class="col-md-4">
-                                            <label>No Rekening</label>
+                                        <div class="mb-3">
+                                             <label for="image" class="form-label">Upload Gambar</label>
+                                             <input class="form-control" type="file" id="image" name="image">
                                         </div>
-                                        <div class="col-md-8 form-group">
-                                            <input type="text" id="no_rekening" class="form-control"
-                                                name="no_rekening" placeholder="No Rekening">
-                                        </div>
+
                                         <div class="col-sm-12 d-flex justify-content-end">
                                             <button type="submit"
                                                 class="btn btn-primary me-1 mb-1">Simpan</button>

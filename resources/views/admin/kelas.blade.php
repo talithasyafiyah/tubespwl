@@ -9,7 +9,7 @@
                 <div class="page-title">
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>Kelas</h3>
+                            <h3>Kelas</h3><a type="button" class="btn btn-outline-primary btn-sm mb-3"  href="/addkelas"><i class="fa fa-plus-circle orange_color"></i> Tambah Kelas </a>
                         </div>
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -35,6 +35,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama Kelas</th>
+                                        <th>Edit</th>
                                         <th>Hapus</th>
                                     </tr>
                                 </thead>
@@ -45,6 +46,7 @@
                                     @php $i++ @endphp
                                         <td>{{$i}}</td>
                                         <td>{{$kelas->nama_kelas}}</td>
+                                        <td><td><a href="{{ url('editkelas', $kelas->kelas_id)}}" type="submit" class='btn btn-success btn-sm'><i class='fa fa-edit'></i></a></td></td>
                                         <td>
                                             <form action="{{url('/deletekelas',$kelas->kelas_id)}}" method="POST">
                                                 @method('delete')

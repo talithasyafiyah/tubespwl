@@ -23,8 +23,26 @@
                     </div>
                     <div class="card">
                         <div class="card-body">
+                            <div class="col-6 col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body px-3 py-4-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="stats-icon red">
+                                                    <i class="fa-solid fa-sack-dollar"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h6 class="text-muted font-semibold">Total Saldo Saya</h6>
+                                                <h6 class="font-extrabold mb-0">Rp{{$saldo}}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <h4 style="text-align: center">Tabungan Saya</h4>
                             <br>
+                            @auth
                             <table class="table table-bordered table-hover" style="text-align: center; border:black">
                                 <thead style="background-color: rgb(220, 240, 248)">
                                 <tr>
@@ -36,25 +54,21 @@
                                     <th>Status</th>
                                 </tr>
                                 </thead>
-                                //percobaan untuk akun siswa : Murni
-                                // misal status ==pending , NISN manual
                                 @foreach ($x as $tabungan)
                                 <tbody>
                                 <tr>
-                                    @if ( $tabungan['NISN']=='0040234566' && $tabungan['status'] == 'pending')
-                                        <td>{{ $tabungan->tabungan_id }}</td>
-                                        <td>{{ $tabungan->tgl_setoran }}</td>
-                                        <td>{{ $tabungan->jlh_setoran }}</td>
-                                        <td>{{ $tabungan->payment }}</td>
-                                        <td>{{ $tabungan->no_rekening }}</td>
-                                        <td>{{ $tabungan->status }}</td>
-                                    @else
+                                    <td>{{ $tabungan->tabungan_id }}</td>
+                                    <td>{{ $tabungan->tgl_setoran }}</td>
+                                    <td>{{ $tabungan->jlh_setoran }}</td>
+                                    <td>{{ $tabungan->payment }}</td>
+                                    <td>{{ $tabungan->no_rekening }}</td>
+                                    <td>{{ $tabungan->status }}</td>
                                 </tr>
                                 </tbody>
-                              
-                                @endif
                                 @endforeach
                             </table>
+                            @endauth
+                            
                         </div>
                     </div>
                     <section class="section">
@@ -62,10 +76,9 @@
                             <div class="card-body">
                                 <h4 style="text-align: center">Profil Saya</h4>
                                 <br>
-                                @auth
-                             
+                                @foreach ($datas as $data)
                                 <div class="row mb-3">
-                                    <label for="id" class="col-sm-4 col-form-label col-form-label-lg">ID</label>
+                                    <label for="id" class="col-sm-4 col-form-label col-form-label-lg">ID User</label>
                                     <div class="col-sm-8">
                                     <input type="number" class="form-control form-control-lg" placeholder="{{auth()->user()->id }}" id="id" readonly>
                                     </div>
@@ -73,7 +86,7 @@
                                 <div class="row mb-3">
                                     <label for="nisn" class="col-sm-4 col-form-label col-form-label-lg">NISN</label>
                                     <div class="col-sm-8">
-                                    <input type="number" class="form-control form-control-lg" placeholder="{{ $data->nisn }}" id="nisn" readonly>
+                                    <input type="number" class="form-control form-control-lg" placeholder="{{ $data->NISN }}" id="nisn" readonly>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -85,7 +98,7 @@
                                 <div class="row mb-3">
                                     <label for="kelas_id" class="col-sm-4 col-form-label col-form-label-lg">Kelas</label>
                                     <div class="col-sm-8">
-                                    <input type="text" class="form-control form-control-lg" placeholder="{{ $data->kelas_id }}" id="kelas_id"readonly>
+                                    <input type="text" class="form-control form-control-lg" placeholder="{{ $data->nama_kelas }}" id="kelas_id"readonly>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -110,8 +123,7 @@
                                 <div class="row mb-1">
                                     <a type="button" class="btn btn-outline-primary btn-lg mb-1"  href=""><i class="fa-solid fa-pen-to-square"></i> Edit Profil</a>
                                 </div>
-                            
-                                @endauth  
+                                @endforeach
                                 
                             </div>
                             

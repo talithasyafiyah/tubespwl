@@ -25,8 +25,16 @@ use App\Http\Controllers\ConfirmController;
 //Admin
 Route::group(['middleware' => ['auth','ceklevel:Admin']], function() {
     Route::get('dashAdmin', [AdminController::class, 'dashAdmin'])->name('admin.dashAdmin');
+    //siswa
     Route::get('siswa', [AdminController::class, 'siswa'])->name('admin.siswa');
+    Route::get('/addsiswa', [DatasiswaController::class, 'create'])->name('admin.addsiswa');
+    Route::post('/insertsiswa', [DatasiswaController::class, 'store'])->name('insertsiswa');
+    Route::get('/editsiswa/{id}', [DatasiswaController::class, 'edit'])->name('admin.editsiswa');
+    Route::put('/updatesiswa/{id}', [DatasiswaController::class, 'update'])->name('admin.updatesiswa');
+    Route::delete('/deletesiswa/{id}', [DatasiswaController::class, 'destroy'])->name('admin.deletesiswa');
+    //kelas
     Route::get('kelas', [AdminController::class, 'kelas'])->name('admin.kelas');
+    Route::delete('/deletekelas/{id}', [AdminController::class, 'deletekelas'])->name('admin.deletekelas');
     //berita
     Route::get('berita', [AdminController::class, 'berita'])->name('admin.berita');
     //add
@@ -41,11 +49,11 @@ Route::group(['middleware' => ['auth','ceklevel:Admin']], function() {
     Route::get('/edittabungan/{id}', [TabunganController::class, 'edit'])->name('admin.edittabungan');
     Route::put('/updatetabungan/{id}', [TabunganController::class, 'update'])->name('admin.updatetabungan');
     //konfirm
-    Route::put('/confirmAcc/{id}', [ConfirmController::class, 'confirmAcc'])->name('admin.confirm');
-    Route::put('/confirmReject/{id}', [ConfirmController::class, 'confirmReject'])->name('admin.reject');
+    Route::put('/confirmAcc/{id}', [ConfirmController::class, 'confirmAcc']);
+    Route::put('/confirmReject/{id}', [ConfirmController::class, 'confirmReject']);
 
     Route::delete('/deletetabungan/{id}', [TabunganController::class, 'destroy'])->name('admin.delete');
-    Route::get('confirm', [ConfirmController::class, 'index']);
+    Route::get('confirm', [ConfirmController::class, 'index'])->name('admin.confirm');
     Route::get('report', [AdminController::class, 'report'])->name('admin.report');
 });
 

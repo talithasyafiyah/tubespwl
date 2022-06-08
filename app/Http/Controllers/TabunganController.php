@@ -18,15 +18,11 @@ class TabunganController extends Controller
     {
         $siswa = \DB::table('siswas')->select('saldo');
         $setoran = \DB::table('tabungans')->select('jlh_setoran');
-
-        $siswa->saldo += $setoran->jlh_setoran;
-
         $tabungans = \DB::table('tabungans')
                     ->join('siswas', 'siswas.NISN', '=', 'tabungans.NISN')
-                    ->join('kelas', 'kelas.kelas_id', '=', 'tabungans.kelas_id')
                     ->where('status', 'accepted')
                     ->get();
-        return view('admin.tabungan', compact('tabungans', 'saldo'));
+        return view('admin.tabungan', compact('tabungans'));
     }
 
     /**
@@ -39,7 +35,6 @@ class TabunganController extends Controller
         $kelass = Kelas::all();
         $tabungans = \DB::table('tabungans')
                     ->join('siswas', 'siswas.NISN', '=', 'tabungans.NISN')
-                    ->join('kelas', 'kelas.kelas_id', '=', 'tabungans.kelas_id')
                     ->get();
         return view('admin.addtabungan', compact('tabungans', 'kelass'));
     }

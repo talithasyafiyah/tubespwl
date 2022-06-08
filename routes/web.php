@@ -11,6 +11,7 @@ use App\Http\Controllers\TabunganController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\ConfirmController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\DatasiswaController;
 
 
 /*

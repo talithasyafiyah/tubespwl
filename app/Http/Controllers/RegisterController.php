@@ -42,7 +42,6 @@ class RegisterController extends Controller
             'level' => 'Siswa'
         ]);
 
-    
         $validatedData['password'] = bcrypt($validatedData['password']);
 
         User::create($validatedData);

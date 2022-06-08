@@ -68,7 +68,7 @@
                                             </div>
                                             <div class="col-md-8 form-group">
                                                 <input type="number" id="nisn" class="form-control @error('nisn') is-invalid @enderror"
-                                                    name="nisn" placeholder="NISN" value="{{ old('nisn') }}">
+                                                    name="NISN" placeholder="NISN" value="{{ old('nisn') }}">
                                                     @error('nisn')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}

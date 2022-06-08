@@ -48,9 +48,10 @@
                                     <tr>
                                     @php $i++ @endphp
                                         <td>{{$i}}</td>
-                                        <td>{{$tabungan->NISN}}</td>
+                                        <td>{{$tabungan->nama}}</td>
                                         <td>Rp{{$tabungan->jlh_setoran}}</td>
-                                        <td>{{$tabungan->tgl_setoran}}</td>
+                                        <?php $time = strtotime($tabungan->tgl_setoran) ?>
+                                        <td>{{date('d/M/Y', $time)}}</td>
                                         <td>{{$tabungan->payment}}</td>
                                         <td>
                                             <form action="{{url('/confirmAcc',$tabungan->tabungan_id)}}" method="POST">

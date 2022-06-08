@@ -32,7 +32,7 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-item {{ Request::is('tabungan') ? 'active' : '' }} || {{ Request::is('confirm') ? 'active' : '' }} || {{ Request::is('addtabungan') ? 'active' : '' }} || {{ Request::is('edittabungan') ? 'active' : '' }} has-sub">
+                        <li class="sidebar-item {{ Request::is('tabungan') ? 'active' : '' }} || {{ Request::is('confirm') ? 'active' : '' }} || {{ Request::is('addtabungan') ? 'active' : '' }} || {{ Request::is('edittabungan/1') ? 'active' : '' }} has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="fa-solid fa-hand-holding-dollar"></i>
                                 <span>Tabungan</span>

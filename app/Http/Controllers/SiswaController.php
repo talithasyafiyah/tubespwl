@@ -153,7 +153,7 @@ class SiswaController extends Controller
                     ->get();
          $x = DB::table('tabungans')
                     ->join('siswas', 'siswas.NISN', '=', 'tabungans.NISN')
-                    ->join('kelas', 'kelas.kelas_id', '=', 'tabungans.kelas_id')
+                    /* ->join('kelas', 'kelas.kelas_id', '=', 'tabungans.kelas_id') */
                     ->where('user_id', '=', Auth::user()->id)
                     ->get();
         // $x = DB::table('tabungans')

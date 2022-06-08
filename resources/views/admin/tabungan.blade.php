@@ -43,11 +43,12 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($tabungans as $tabungan)
+                                    @include('components.detail')
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$tabungan->nama}}</td>
-                                        <td>Rp</td>
-                                        <td><a href="{{ url('/showtabungan', $tabungan->tabungan_id)}}" type="submit" class='btn btn-primary btn-sm' data-bs-toggle="modal" data-bs-target="#inlineForm"><i class='fa fa-folder-open'></i></a></td>
+                                        <td>Rp{{$tabungan->jlh_setoran}}</td>
+                                        <td><a href="{{ url('/showtabungan', $tabungan->tabungan_id)}}" type="submit" class='btn btn-primary btn-sm' data-bs-toggle="modal" data-bs-target="#inlineForm{{$loop->iteration}}"><i class='fa fa-folder-open'></i></a></td>
                                         <td><a href="{{ url('edittabungan', $tabungan->tabungan_id)}}" type="submit" class='btn btn-success btn-sm'><i class='fa fa-edit'></i></a></td>
                                         <td>
                                             <form action="{{url('/deletetabungan',$tabungan->tabungan_id)}}" method="POST">
@@ -61,62 +62,6 @@
                                 </tbody>
                             </table>
 
-                            <div class="modal fade text-left" id="inlineForm" tabindex="-1"
-                                role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-                                    role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title" id="myModalLabel33">Login Form </h4>
-                                            <button type="button" class="close" data-bs-dismiss="modal"
-                                                aria-label="Close">
-                                                <i data-feather="x"></i>
-                                            </button>
-                                        </div>
-                                        <form action="/showtabungan/" method="#">
-                                            <div class="modal-body">
-                                                <label>NISN: </label>
-                                                <div class="form-group">
-                                                    <input type="text" name="NISN"
-                                                        class="form-control" value="">
-                                                </div>
-                                                <label>Nama: </label>
-                                                <div class="form-group">
-                                                    <input type="text" name="nama"
-                                                        class="form-control" value="">
-                                                </div>
-                                                <label>Jumlah Setoran: </label>
-                                                <div class="form-group">
-                                                    <input type="text" name="jlh_setoran"
-                                                        class="form-control" value="">
-                                                </div>
-                                                <label>Tanggal Setoran: </label>
-                                                <div class="form-group">
-                                                    <input type="text" name="tgl_setoran"
-                                                        class="form-control" value="">
-                                                </div>
-                                                <label>Payment: </label>
-                                                <div class="form-group">
-                                                    <input type="text" name="payment"
-                                                        class="form-control" value="">
-                                                </div>
-                                                <label>No Rekening: </label>
-                                                <div class="form-group">
-                                                    <input type="text" name="no_rekening"
-                                                        class="form-control" value="">
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-light-secondary"
-                                                    data-bs-dismiss="modal">
-                                                    <i class="bx bx-x d-block d-sm-none"></i>
-                                                    <span class="d-none d-sm-block">Close</span>
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </section>

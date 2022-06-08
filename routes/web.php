@@ -34,7 +34,7 @@ Route::group(['middleware' => ['auth','ceklevel:Admin']], function() {
     Route::get('/addsiswa', [DatasiswaController::class, 'create'])->name('admin.addsiswa');
     Route::post('/insertsiswa', [DatasiswaController::class, 'store'])->name('insertsiswa');
     Route::get('/editsiswa/{id}', [DatasiswaController::class, 'edit'])->name('admin.editsiswa');
-    Route::put('/updatesiswa/{id}', [DatasiswaController::class, 'update'])->name('admin.updatesiswa');
+    Route::patch('/updatesiswa', [DatasiswaController::class, 'update'])->name('admin.updatesiswa');
     Route::delete('/deletesiswa/{id}', [DatasiswaController::class, 'destroy'])->name('admin.deletesiswa');
     
     //kelas
@@ -68,7 +68,7 @@ Route::group(['middleware' => ['auth','ceklevel:Siswa']], function() {
     Route::get('dashSiswa', [SiswaController::class, 'dashSiswa'])->name('siswa.dashSiswa');
     Route::get('Siswa', [SiswaController::class, 'Siswa'])->name('siswa.siswa');
     Route::get('Tabungan', [SiswaController::class, 'Tabungan'])->name('siswa.tabungan'); //Read
-    Route::post('Tabungan/store', [SiswaController::class, 'store'])->name('siswa.simpan'); //Create
+    Route::post('Tabungan/store', [TabunganController::class, 'store'])->name('siswa.simpan'); //Create
     Route::get('Transaksi', [SiswaController::class, 'Transaksi'])->name('siswa.transaksi');
     Route::get('Report', [ReportController::class, 'index'])->name('siswa.report');
 });

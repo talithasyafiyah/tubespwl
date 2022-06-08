@@ -173,6 +173,7 @@ class SiswaController extends Controller
 
     public function Report()
     {
-        return view('siswa.report');
+        $tabungan=Tabungan::all();
+        return view('siswa.report',compact('tabungan'));
     }
 }

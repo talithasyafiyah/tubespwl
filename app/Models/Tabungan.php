@@ -23,6 +23,6 @@ class Tabungan extends Model
         return $this->belongsTo(Kelas::class);
     }
     public function siswa(){
-        return $this->belongsTo(Siswa::classphp);
+        return $this->belongsTo(Siswa::class);
     }
 }

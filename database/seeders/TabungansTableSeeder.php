@@ -19,6 +19,7 @@ class TabungansTableSeeder extends Seeder
                 'tgl_setoran' => '2022-05-10',
                 'jlh_setoran' => 20000,
                 'payment' => 'OVO',
+                'status'  => 'accepted',
                 'NISN' => '0040256174',
                 'kelas_id' => 11
             ],
@@ -26,6 +27,7 @@ class TabungansTableSeeder extends Seeder
                 'tgl_setoran' => '2022-05-10',
                 'jlh_setoran' => 15000,
                 'payment' => 'Gopay',
+                'status'  => 'accepted',
                 'NISN' => '0040234566',
                 'kelas_id' => 10
             ],
@@ -33,6 +35,7 @@ class TabungansTableSeeder extends Seeder
                 'tgl_setoran' => '2022-05-10',
                 'jlh_setoran' => 18000,
                 'payment' => 'DANA',
+                'status'  => 'rejected',
                 'NISN' => '0040278968',
                 'kelas_id' => 8   
             ],
@@ -40,6 +43,7 @@ class TabungansTableSeeder extends Seeder
                 'tgl_setoran' => '2022-05-10',
                 'jlh_setoran' => 25000,
                 'payment' => 'DANA',
+                'status'  => 'pending',
                 'NISN' => '0040234567',
                 'kelas_id' => 7
             ],
@@ -47,6 +51,7 @@ class TabungansTableSeeder extends Seeder
                 'tgl_setoran' => '2022-05-10',
                 'jlh_setoran' => 20000,
                 'payment' => 'Gopay',
+                'status'  => 'pending',
                 'NISN' => '0040292345',
                 'kelas_id' => 5
             ],

@@ -21,4 +21,8 @@ class Siswa extends Model
     public function kelas(){
         return $this->belongsTo(Kelas::class);
     }
+
+    public function tabungan(){
+        return $this->hasOne(Tabungan::class);
+    }
 }

@@ -38,11 +38,29 @@ class BeritaController extends Controller
      */
     public function store(Request $request)
     {
-      /* dd($request->all()); */
-      return $request->file('image')->store('post-images');
-      Berita::create($request->all());
+        $request->validate([
+            'user_id' => 'required',
+            'judul' => 'required',
+            'konten' => 'required',
+            'admin' => 'required',
+            'tanggal' => 'required',
+            'image' => 'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:20487',
+        ]);
+        $berita = new Berita;
+        $berita->user_id = Auth::user()->id;
+        $berita->judul=$request->judul;
+        $berita->konten=$request->konten;
+        $berita->admin =$request->admin;
+        $berita->tanggal=$request->tanggal;
+        $berita->image=$request->$nama_image;
+        $berita->save();
 
-      return redirect()->route('admin.berita')->with('success', 'Berhasil menambah data');
+            if(request()->hasFile(key: 'image')){
+                $image = request()->file(key: 'image')->getClientOriginalName();
+                request()->file(key: 'image')->storeAs('/post-image', $image, options:'');
+                $berita->update(['image'=>$image]);
+            }
+            return redirect('admin.berita')->with('success', 'Data Berhasil Ditambahkan!');
     }
     /**
      * Display the specified resource.

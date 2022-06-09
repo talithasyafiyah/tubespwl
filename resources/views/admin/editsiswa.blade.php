@@ -24,8 +24,8 @@
                 <section class="section">
                     <div class="card">
                         <div class="card-body">
-                            <form action="/updatesiswa/{{$data->NISN}}" method="POST" enctype="multipart/form-data" class="form form-horizontal">
-                                @method('put')
+                            <form action="/updatesiswa" method="POST" enctype="multipart/form-data" class="form form-horizontal">
+                                @method('PATCH')
                                 @csrf
                                 <div class="form-body">
                                     <div class="row">

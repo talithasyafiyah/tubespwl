@@ -9,13 +9,18 @@ class Tabungan extends Model
 {
     protected $primaryKey = "tabungan_id";
     protected $table = "tabungans";
-    protected $fillable = [
+    /* protected $fillable = [
         'jlh_setoran',
         'tgl_setoran',
         'payment',
         'no_rekening',
         'nisn',
         'kelas_id',
+    ]; */
+    protected $guarded = [
+        'tabungan_id',
+        'created_at',
+        'updated_at'
     ];
     public $timestamps = false;
 
@@ -26,8 +31,8 @@ class Tabungan extends Model
         return $this->belongsTo(Siswa::class);
     }
 
-    public function user()
+    /* public function user()
     {
        return $this->belongsTo(User::class);
-    }
+    } */
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Kelas;
 
 class KelasController extends Controller
 {
@@ -23,7 +24,10 @@ class KelasController extends Controller
      */
     public function create()
     {
-        //
+        $data = Kelas::all();
+        return view('admin.addkelas', [
+            'data' => $data,
+        ]);
     }
 
     /**
@@ -34,7 +38,9 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Kelas::create($request->all());
+
+        return redirect()->route('admin.kelas')->with('success', 'Berhasil menambah data');
     }
 
     /**
@@ -56,7 +62,8 @@ class KelasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Kelas::find($id);
+        return view('admin.editkelas', compact('data'));
     }
 
     /**
@@ -68,7 +75,10 @@ class KelasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = Kelas::find($id);
+        $data->update($request->all());
+
+        return redirect()->route('admin.kelas')->with('success', 'Data berhasil diupdate');
     }
 
     /**

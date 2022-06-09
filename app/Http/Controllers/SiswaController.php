@@ -133,37 +133,48 @@ class SiswaController extends Controller
 
     public function Siswa()
     {
-        $x = Tabungan::all();
-        $user = Auth::user()->id;
-        $data = $user;
-        // $data = Siswa::all();
-        $data = \DB::table('siswas')
-                    ->join('users', 'users.id', '=', 'siswas.user_id')
-                    // ->where('id', $user)
+        $saldo = DB::table('siswas')
+                    ->where('siswas.user_id', '=', Auth::user()->id)
+                    ->sum('saldo');
+        // $setoran = DB::table('tabungans')
+        //             ->join('siswas', 'siswas.NISN', '=', 'tabungans.NISN')
+        //             ->join('siswas', 'siswas.user_id', '=', 'tabungans.user_id')
+        //             ->whereColumn([
+        //                 ['status', '=', 'accepted'],
+        //                 ['tabungans.user_id', '=', Auth::user()->id],
+        //                 ])->sum('jlh_setoran');
+        //             ->where('status', '=', 'accepted') 
+        //             ->where ('user_id', '=', Auth::user()->id)
+        //             ->sum('jlh_setoran')
+        //             ->get();
+        $datas = DB::table('siswas')
+                    ->join('kelas', 'kelas.kelas_id', '=', 'siswas.kelas_id')
+                    ->where('siswas.user_id', '=', Auth::user()->id)
                     ->get();
-        // $data = array(
-        //     'Auth::user()->id'=> "data",
-        //     'data'=>Siswa::all()
-        // );
-        $data->nisn  = Auth::user()->id;
-        $data->nama  = Auth::user()->id;
-        $data->nama  = Auth::user()->id;
-        $data->alamat= Auth::user()->id;
-        $data->no_hp = Auth::user()->id;
-        $data->saldo = Auth::user()->id;
-        $data->kelas_id=Auth::user()->id;
-        return view('siswa.siswa',compact('data', 'user', 'x'));
+         $x = DB::table('tabungans')
+                    ->join('siswas', 'siswas.NISN', '=', 'tabungans.NISN')
+                    /* ->join('kelas', 'kelas.kelas_id', '=', 'tabungans.kelas_id') */
+                    ->where('user_id', '=', Auth::user()->id)
+                    ->get();
+        // $x = DB::table('tabungans')
+        //         ->join('siswas', 'siswas.NISN', 'tabungans.NISN')
+        //         ->where('tabungans.NISN', '=', $datas->NISN) 
+        //         ->where('siswa.user_id', '=', Auth::user()->id)
+        //         ->get();
+        return view('siswa.siswa',[
+                'x' => $x,
+            'datas' => $datas,
+            'saldo' => $saldo,
+            // 'setoran' => $setoran,
+            // 'total'=> $total,
+
+        ]);
     }
 
     public function Tabungan()
     {
         $x = Kelas::all();
-        // $tabungans belum dipanggil
-        $tabungans = DB::table('tabungans')
-                    ->join('siswas', 'siswas.NISN', '=', 'tabungans.NISN')
-                    ->join('kelas', 'kelas.kelas_id', '=', 'tabungans.kelas_id')
-                    ->get();
-        return view('siswa.tabungan', compact('tabungans', 'x'));
+        return view('siswa.tabungan', compact( 'x'));
     }
 
     public function Transaksi()

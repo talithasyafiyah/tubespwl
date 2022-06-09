@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tabungan;
+use App\Models\Siswa;
 
 
 class ConfirmController extends Controller
@@ -15,8 +16,7 @@ class ConfirmController extends Controller
      */
     public function index()
     {
-        $tabungans = Tabungan::all()
-                    ->where('status', 'pending');
+        $tabungans = Tabungan::join('siswas', 'siswas.NISN', '=', 'tabungans.NISN')->where('status', 'pending')->get();
         return view('admin.confirm', compact('tabungans'));
     }
 
@@ -89,10 +89,18 @@ class ConfirmController extends Controller
     public function confirmAcc($id)
     {
         $data = Tabungan::find($id);
- 
+
+        $saldo = Siswa::where('NISN', $data['NISN'])->get()[0]['saldo'];
+
+        $saldo += $data['jlh_setoran'];
+
+        Siswa::where('NISN', $data['NISN'])->update([
+            'saldo'=>$saldo
+        ]);
+
         $data->status = 'accepted';
-        
         $data->save();
+        
 
         return redirect()->route('admin.confirm')->with('success', 'Data berhasil dikonfirmasi');
     }
@@ -105,6 +113,6 @@ class ConfirmController extends Controller
         
         $data->save();
 
-        return redirect()->route('admin.confirm')->with('success', 'Data berhasil dikonfirmasi');
+        return redirect()->route('admin.confirm')->with('success', 'Data berhasil ditolak');
     }
 }

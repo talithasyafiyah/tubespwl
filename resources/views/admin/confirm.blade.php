@@ -15,7 +15,7 @@
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Tabungan</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Konfirmasi Tabungan</li>
                                 </ol>
                             </nav>
                         </div>
@@ -48,9 +48,10 @@
                                     <tr>
                                     @php $i++ @endphp
                                         <td>{{$i}}</td>
-                                        <td>{{$tabungan->NISN}}</td>
+                                        <td>{{$tabungan->nama}}</td>
                                         <td>Rp{{$tabungan->jlh_setoran}}</td>
-                                        <td>{{$tabungan->tgl_setoran}}</td>
+                                        <?php $time = strtotime($tabungan->tgl_setoran) ?>
+                                        <td>{{date('d/M/Y', $time)}}</td>
                                         <td>{{$tabungan->payment}}</td>
                                         <td>
                                             <form action="{{url('/confirmAcc',$tabungan->tabungan_id)}}" method="POST">

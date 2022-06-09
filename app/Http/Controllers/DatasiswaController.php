@@ -76,10 +76,22 @@ class DatasiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $data = Siswa::find($id);
-        $data->update($request->all());
+
+        $NISN = (int) $request->NISN;
+        /* $siswa = Siswa::where('NISN', $NISN)->get(); */
+
+        Siswa::where('NISN', $NISN)->update([
+            'NISN'=> $request->NISN,
+            'nama'=> $request->nama,
+            'alamat'=>$request->alamat,
+            'no_hp'=>$request->no_hp,
+            'saldo'=>$request->saldo
+        ]);
+
+      /*   $data = Siswa::find($id);
+        $data->update($request->all()); */
 
         return redirect()->route('admin.siswa')->with('success', 'Data berhasil diupdate');
     }

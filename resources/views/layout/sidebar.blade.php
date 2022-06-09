@@ -18,7 +18,7 @@
                         </li>
 
                         <li class="sidebar-title">Tables</li>
-                        <li class="sidebar-item {{ Request::is('siswa') ? 'active' : '' }}">
+                        <li class="sidebar-item {{ Request::is('siswa') ? 'active' : '' }} || {{ Request::is('addsiswa') ? 'active' : '' }} || {{ Request::is('editsiswa/{id}') ? 'active' : '' }} ">
                             <a href="/siswa" class='sidebar-link'>
                                 <i class="bi bi-people-fill"></i>
                                 <span>Data Siswa</span>
@@ -32,7 +32,7 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-item {{ Request::is('tabungan') ? 'active' : '' }} || {{ Request::is('confirm') ? 'active' : '' }}  has-sub">
+                        <li class="sidebar-item {{ Request::is('tabungan') ? 'active' : '' }} || {{ Request::is('confirm') ? 'active' : '' }} || {{ Request::is('addtabungan') ? 'active' : '' }} || {{ Request::is('edittabungan/1') ? 'active' : '' }} has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="fa-solid fa-hand-holding-dollar"></i>
                                 <span>Tabungan</span>

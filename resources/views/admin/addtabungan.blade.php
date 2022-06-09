@@ -36,18 +36,6 @@
                                                 name="NISN" placeholder="NISN">
                                         </div>
                                         <div class="col-md-4">
-                                            <label>Kelas ID</label>
-                                        </div>
-                                        <div class="col-md-8 form-group">
-                                            
-                                            <select name="kelas_id" class="form-select" id="basicSelect">
-                                                @foreach ($kelass as $kelas)
-                                                <option value="{{$kelas->kelas_id}}">{{$kelas->nama_kelas}}</option>
-                                                @endforeach
-                                            </select>
-                                            
-                                        </div>
-                                        <div class="col-md-4">
                                             <label>Jumlah Setoran</label>
                                         </div>
                                         <div class="col-md-8 form-group">

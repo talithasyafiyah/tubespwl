@@ -19,15 +19,13 @@ class TabunganController extends Controller
     {
         $siswa = \DB::table('siswas')->select('saldo');
         $setoran = \DB::table('tabungans')->select('jlh_setoran');
-
-        $siswa->saldo += $setoran->jlh_setoran;
-
         $tabungans = \DB::table('tabungans')
                     ->join('siswas', 'siswas.NISN', '=', 'tabungans.NISN')
-                    ->join('kelas', 'kelas.kelas_id', '=', 'tabungans.kelas_id')
                     ->where('status', 'accepted')
                     ->get();
-        return view('admin.tabungan', compact('tabungans', 'saldo'));
+
+        /* dd($tabungans); */
+        return view('admin.tabungan', compact('tabungans'));
     }
 
     /**
@@ -40,7 +38,6 @@ class TabunganController extends Controller
         $kelass = Kelas::all();
         $tabungans = \DB::table('tabungans')
                     ->join('siswas', 'siswas.NISN', '=', 'tabungans.NISN')
-                    ->join('kelas', 'kelas.kelas_id', '=', 'tabungans.kelas_id')
                     ->get();
         return view('admin.addtabungan', compact('tabungans', 'kelass'));
     }
@@ -53,8 +50,29 @@ class TabunganController extends Controller
      */
     public function store(Request $request)
     {
-        /* dd($request->all()); */
-        Tabungan::create($request->all());
+
+        if(auth()->user()->level === 'Admin') {
+
+            $saldo = Siswa::where('NISN', $request->NISN)->get()[0]['saldo'];
+            $saldo += $request->jlh_setoran;
+            
+            Tabungan::create([
+                'NISN'=>$request->NISN,
+                'jlh_setoran'=> $request->jlh_setoran,
+                'tgl_setoran'=>$request->tgl_setoran,
+                'payment'=>$request->payment,
+                'no_rekening'=>$request->rekening,
+                'status' => 'accepted'
+            ]);
+
+            Siswa::where('NISN', $request->NISN)->update([
+                'saldo'=>$saldo
+            ]);
+
+        } else {
+            /* dd($request->all()); */
+            Tabungan::create($request->all());
+        }
 
         return redirect()->route('admin.tabungan')->with('success', 'Berhasil menambah data');
     }
@@ -67,7 +85,7 @@ class TabunganController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Tabungan::find($id);
     }
 
     /**
@@ -79,7 +97,11 @@ class TabunganController extends Controller
     public function edit($id)
     {
         $data = Tabungan::find($id);
-        return view('admin.edittabungan', compact('data'));
+        $tabungan = TRUE;
+        return view('admin.edittabungan', ([
+            'data'=>$data,
+            'tabugan' => $tabungan
+        ]));
     }
 
     /**
@@ -105,6 +127,15 @@ class TabunganController extends Controller
      */
     public function destroy($id)
     {
+        $tabungan = Tabungan::where('tabungan_id', $id)->get()[0];
+        $saldo = Siswa::where('NISN', $tabungan['NISN'])->get()[0]['saldo'];
+        
+        $saldo -= $tabungan['jlh_setoran'];
+        
+        Siswa::where('NISN', $tabungan['NISN'])->update([
+            'saldo'=>$saldo
+        ]);
+
         Tabungan::destroy($id);
 
         return redirect()->route('admin.tabungan')->with('success', 'Berhasil menghapus data');

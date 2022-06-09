@@ -35,21 +35,20 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama</th>
-                                        <th>Kelas</th>
                                         <th>Saldo</th>
+                                        <th>Detail</th>
                                         <th>Edit</th>
                                         <th>Hapus</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php $i = 0 @endphp
                                     @foreach ($tabungans as $tabungan)
+                                    @include('components.detail')
                                     <tr>
-                                    @php $i++ @endphp
-                                        <td>{{$i}}</td>
+                                        <td>{{$loop->iteration}}</td>
                                         <td>{{$tabungan->nama}}</td>
-                                        <td>{{$tabungan->nama_kelas}}</td>
-                                        <td>Rp{{$siswa->saldo}}</td>
+                                        <td>Rp{{$tabungan->jlh_setoran}}</td>
+                                        <td><a href="{{ url('/showtabungan', $tabungan->tabungan_id)}}" type="submit" class='btn btn-primary btn-sm' data-bs-toggle="modal" data-bs-target="#inlineForm{{$loop->iteration}}"><i class='fa fa-folder-open'></i></a></td>
                                         <td><a href="{{ url('edittabungan', $tabungan->tabungan_id)}}" type="submit" class='btn btn-success btn-sm'><i class='fa fa-edit'></i></a></td>
                                         <td>
                                             <form action="{{url('/deletetabungan',$tabungan->tabungan_id)}}" method="POST">
@@ -62,6 +61,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+
                         </div>
                     </div>
                 </section>

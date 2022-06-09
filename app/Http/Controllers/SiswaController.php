@@ -130,8 +130,8 @@ class SiswaController extends Controller
     {
         $x = Kelas::all();
         $sis = Siswa::find($id);
-        $sis->update($request->except(['_token', 'submit']));
-        return redirect('siswa.siswa', compact('x'))->with('success', 'Profil berhasil diedit!');
+        $sis->update($request->except(['user_id', 'NISN', 'saldo']));
+        return redirect('siswa.siswa', compact('x', 'sis'))->with('success', 'Profil berhasil diedit!');
     }
 
     /**

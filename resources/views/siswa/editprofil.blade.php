@@ -31,8 +31,8 @@
                     @endif
                         <div class="card-content">
                             <div class="card-body">
-                                {{-- @foreach ($datas as $data) --}}
                                 <form class="form form-horizontal" method="POST" action="Profilupdate/{{ auth()->user()->id }}" enctype="multipart/form-data">
+                                   @method('put')
                                     @csrf
                                     <div class="form-body">
                                         <div class="row">
@@ -50,12 +50,12 @@
                                             </div>
                                             
                                             <div class="col-md-4">
-                                                <label for="nisn">NISN</label>
+                                                <label for="NISN">NISN</label>
                                             </div>
                                             <div class="col-md-8 form-group">
-                                                <input type="number" id="nisn" class="form-control @error('nisn') is-invalid @enderror"
-                                                    name="nisn"  value="{{ $sis->nisn}}">
-                                                    @error('nisn')
+                                                <input type="number" id="NISN" class="form-control @error('NISN') is-invalid @enderror"
+                                                    name="NISN"  value="{{ old('NISN', $sis->NISN)}}">
+                                                    @error('NISN')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
                                                     </div>
@@ -67,7 +67,7 @@
                                             </div>
                                             <div class="col-md-8 form-group">
                                                 <input type="text" id="nama" class="form-control @error('nama') is-invalid @enderror"
-                                                    name="nama" value="{{ $sis->nama }}">
+                                                    name="nama" value="{{ old('nama', $sis->nama) }}">
                                                     @error('nama')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -84,7 +84,7 @@
                                                         {{-- @if (old('kelas_id', $sis->kelas_id)==$tabungan->kelas_id)
                                                         <option value="{{ $tabungan->kelas_id }}"selected>{{ $tabungan->nama_kelas }}</option>
                                                         @else --}}
-                                                        <option value="{{ $tabungan->kelas_id }}">{{ $tabungan->nama_kelas }}</option>
+                                                        <option value="{{ old('kelas_id',$tabungan->kelas_id) }}">{{ old('nama_kelas', $tabungan->nama_kelas) }}</option>
                                                         {{-- @endif --}}
                                                     @endforeach
                                                 </select>    
@@ -94,7 +94,7 @@
                                             </div>
                                             <div class="col-md-8 form-group">
                                                 <input type="text" id="alamat" class="form-control @error('alamat') is-invalid @enderror"
-                                                    name="alamat"  value="{{ $sis->alamat }}">
+                                                    name="alamat"  value="{{ old('alamat', $sis->alamat) }}">
                                                     @error('alamat')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -106,7 +106,7 @@
                                             </div>
                                             <div class="col-md-8 form-group">
                                                 <input type="number" id="no_hp" class="form-control @error('no_hp') is-invalid @enderror"
-                                                    name="no_hp" value="{{ $sis->no_hp }}">
+                                                    name="no_hp" value="{{ old('no_hp', $sis->no_hp) }}">
                                                     @error('no_hp')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -118,7 +118,7 @@
                                             </div>
                                             <div class="col-md-8 form-group">
                                                 <input type="number" id="saldo" class="form-control @error('saldo') is-invalid @enderror"
-                                                    name="saldo"value="{{ $sis->saldo }}">
+                                                    name="saldo"value="{{ old('saldo',  $sis->saldo) }}">
                                                     @error('saldo')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -133,7 +133,6 @@
                                         </div>
                                     </div>
                                 </form>
-                                {{-- @endforeach --}}
                             </div>
                         </div>
                     </div>

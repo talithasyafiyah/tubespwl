@@ -99,8 +99,11 @@
                                                 </select>    
                                             </div>
                                             <div class="col-sm-12 d-flex justify-content-end">
+                                                    <a href="/Siswa"class="btn btn-outline-info me-1 mb-1" type="button"><i class="fa-solid fa-arrow-left-long"></i> Kembali</a>
+                                            </div>
+                                            <div class="col-sm-12 d-flex justify-content-end">
                                                 <button type="submit"
-                                                    class="btn btn-primary me-1 mb-1"><i class="fa-solid fa-hand-holding-dollar pe-4"></i>Buat Profil</button>
+                                                    class="btn btn-outline-primary me-1 mb-1"><i class="fa-solid fa-user-plus"></i>  Buat Profil</button>
                                             </div>
                                         </div>
                                     </div>

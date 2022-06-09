@@ -31,15 +31,15 @@
                     @endif
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form form-horizontal" method="POST" action="Profilupdate/{{ auth()->user()->id }}" enctype="multipart/form-data">
+                                <form class="form form-horizontal" method="POST" action="/Profilupdate/{{ auth()->user()->id }}" enctype="multipart/form-data">
                                    @method('put')
                                     @csrf
                                     <div class="form-body">
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            {{-- <div class="col-md-4">
                                                 <label for="user_id">User ID</label>
-                                            </div>
-                                            <div class="col-md-8 form-group">
+                                            </div> --}}
+                                            {{-- <div class="col-md-8 form-group">
                                                 <input type="number" id="user_id" class="form-control @error('user_id') is-invalid @enderror"
                                                     name="user_id"  value="{{auth()->user()->id }}">
                                                     @error('user_id')
@@ -47,7 +47,7 @@
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
-                                            </div>
+                                            </div> --}}
                                             
                                             <div class="col-md-4">
                                                 <label for="NISN">NISN</label>
@@ -79,7 +79,7 @@
                                             </div>
                                             <div class="col-md-8 form-group">
                                                 <select class="form-select" name="kelas_id" id="kelas_id">
-                                                    <option value="">-Pilih-</option>
+                                                    <option value="{{$sis->kelas_id}}">-Pilih-</option>
                                                     @foreach ($x as $tabungan)
                                                         {{-- @if (old('kelas_id', $sis->kelas_id)==$tabungan->kelas_id)
                                                         <option value="{{ $tabungan->kelas_id }}"selected>{{ $tabungan->nama_kelas }}</option>
@@ -113,10 +113,10 @@
                                                     </div>
                                                     @enderror
                                             </div>
-                                            <div class="col-md-4">
+                                            {{-- <div class="col-md-4">
                                                 <label for="saldo">Saldo</label>
-                                            </div>
-                                            <div class="col-md-8 form-group">
+                                            </div> --}}
+                                            {{-- <div class="col-md-8 form-group">
                                                 <input type="number" id="saldo" class="form-control @error('saldo') is-invalid @enderror"
                                                     name="saldo"value="{{ old('saldo',  $sis->saldo) }}">
                                                     @error('saldo')
@@ -124,7 +124,7 @@
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
-                                            </div>
+                                            </div> --}}
                                             
                                             <div class="col-sm-12 d-flex justify-content-end">
                                                 <button type="submit"

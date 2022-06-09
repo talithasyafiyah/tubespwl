@@ -113,7 +113,10 @@ class SiswaController extends Controller
     {
         // $sis = Siswa::all();
         $x= Kelas::all();
-        $sis = Siswa::find($id);
+        $sis = Siswa::where('user_id', $id)->get()[0];
+
+        /* dd($sis); */
+
         return view('siswa.editprofil', compact('sis', 'x'));
     }
 
@@ -128,10 +131,20 @@ class SiswaController extends Controller
     //Masih ERROR
     public function update(Request $request, $id)
     {
-        $x = Kelas::all();
+        /* dd($request->all()); */
+
+        Siswa::where('user_id', $id)->update([
+            'NISN'=>$request->NISN,
+            'nama'=>$request->nama,
+            'alamat'=>$request->alamat,
+            'no_hp'=>$request->no_hp,
+            'kelas_id'=>$request->kelas_id
+        ]);
+
+        /* $x = Kelas::all();
         $sis = Siswa::find($id);
-        $sis->update($request->except(['user_id', 'NISN', 'saldo']));
-        return redirect('siswa.siswa', compact('x', 'sis'))->with('success', 'Profil berhasil diedit!');
+        $sis->update($request->except(['user_id', 'NISN', 'saldo'])); */
+        return back()->with('success', 'Profil berhasil diedit!');
     }
 
     /**

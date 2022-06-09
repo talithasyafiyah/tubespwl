@@ -131,17 +131,23 @@
                                     </div>
                                 </div>
                                 <br>
-                                {{-- Masih Belum FIX --}}
-                                @if ($data->id = Auth::user()->id)
-                                <div class="row mb-1">
-                                    <a type="button" class="btn btn-outline-warning btn-lg mb-1"  href="Profil/{{auth()->user()->id }}/edit"><i class="fa-solid fa-pen-to-square"></i> Edit Profil</a>
-                                </div>
+                                @endforeach
+
+                                <?php
+                                use App\Models\Siswa; 
+                                $check = Siswa::where('user_id', auth()->user()->id)->exists();
+                                ?>
+
+                                @if ($check)
+                                    <div class="row mb-1">
+                                        <a type="button" class="btn btn-outline-warning btn-lg mb-1"  href="Profil/{{auth()->user()->id }}/edit"><i class="fa-solid fa-pen-to-square"></i> Edit Profil</a>
+                                    </div>
+                                @else
+                                    <div class="row mb-1">
+                                        <a type="button" class="btn btn-outline-success btn-lg mb-1"  href="{{ route('siswa.profil') }}"><i class="fa-solid fa-pen-to-square"></i> Buat Profil</a>
+                                    </div>
                                 @endif
                                 
-                                @endforeach
-                                <div class="row mb-1">
-                                    <a type="button" class="btn btn-outline-success btn-lg mb-1"  href="{{ route('siswa.profil') }}"><i class="fa-solid fa-pen-to-square"></i> Buat Profil</a>
-                                </div>
                             </div>
                             
                         </div>

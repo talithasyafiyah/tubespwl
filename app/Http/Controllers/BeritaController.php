@@ -73,7 +73,7 @@ class BeritaController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Berita::find($id);
     }
 
     /**
@@ -85,7 +85,11 @@ class BeritaController extends Controller
     public function edit($id)
     {
         $data = Berita::find($id);
-        return view('admin.editberita', compact('data'));
+        $berita = TRUE;
+        return view('admin.editberita', ([
+            'data'=>$data,
+            'berita' => $berita
+        ]));
     }
 
     /**

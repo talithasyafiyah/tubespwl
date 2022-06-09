@@ -52,9 +52,9 @@
                                         <td>{{$berita->konten}}</td>
                                         <td>{{$berita->tanggal}}</td>
                                         <td>{{$berita->username}}</td>
-                                        <td><a href="" type="submit" class='btn btn-success btn-sm'><i class='fa fa-edit'></i></a></td>
+                                        <td><a href="{{ url('editberita', $berita->berita_id)}}" type="submit" class='btn btn-success btn-sm'><i class='fa fa-edit'></i></a></td>
                                         <td>
-                                            <form action="" method="POST">
+                                        <form action="{{url('/deleteberita',$berita->berita_id)}}" method="POST">
                                                 @method('delete')
                                                 @csrf
                                                 <button type="submit" class='btn btn-danger btn-sm' onclick="return confirm('Apakah yakin ingin menghapus data ini?')"><i class='fa fa-trash'></i></button>

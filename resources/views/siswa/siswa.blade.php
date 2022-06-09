@@ -58,7 +58,8 @@
                                 <tbody>
                                 <tr>
                                     <td>{{ $tabungan->tabungan_id }}</td>
-                                    <td>{{ $tabungan->tgl_setoran }}</td>
+                                    <?php $time = strtotime($tabungan->tgl_setoran) ?>
+                                    <td>{{ date('d/M/Y', $time) }}</td>
                                     <td>{{ $tabungan->jlh_setoran }}</td>
                                     <td>{{ $tabungan->payment }}</td>
                                     <td>{{ $tabungan->no_rekening }}</td>

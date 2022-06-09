@@ -42,7 +42,8 @@
                                     @php $i++ @endphp
                                         <td>{{$i}}</td>
                                         <td>{{$tabung->jlh_setoran}}</td>
-                                        <td>{{$tabung->tgl_setoran}}</td>
+                                        <?php $time = strtotime($tabung->tgl_setoran) ?>
+                                        <td>{{date('d/M/Y', $time)}}</td>
                                         <td>{{$tabung->payment}}</td>
                                         <td>{{$tabung->status}}</td>
                                         <td><a href="/report/{{$tabung->tabungan_id}}" target="_blank" class="btn btn-primary col-md-12">Cetak <i class="fas fa-print"></i></a></td>

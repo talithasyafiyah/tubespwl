@@ -20,8 +20,8 @@ class ReportController extends Controller
     {
         $tabungan = \DB::table('tabungans')
                     ->join('siswas', 'siswas.NISN', '=', 'tabungans.NISN')
-                    ->join('kelas', 'kelas.kelas_id', '=', 'tabungans.kelas_id')
                     ->where('user_id', '=', Auth::user()->id)
+                    ->where('status', '=', 'accepted')
                     ->get();
         /* $tabungan->user_id = Auth::user()->id; */
         return view('siswa.report',compact('tabungan'));

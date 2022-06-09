@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Berita;
+use Auth;
 
 class BeritaController extends Controller
 {
@@ -14,8 +15,10 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        $beritas = Berita::all();
-        return view('admin.addberita', compact('beritas'));
+        $beritas = \DB::table('beritas')
+                    ->join('users', 'users.id', '=', 'beritas.user_id')
+                    ->get();
+        return view('admin.berita', compact('beritas'));
     }
     /**
      * Show the form for creating a new resource.
@@ -38,29 +41,29 @@ class BeritaController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'user_id' => 'required',
+        /* return $request->file('image')->store('berita-images'); */
+        $validatedData = $request->validate([
             'judul' => 'required',
             'konten' => 'required',
-            'admin' => 'required',
             'tanggal' => 'required',
-            'image' => 'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:20487',
+            'image' => 'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:3024',
         ]);
-        $berita = new Berita;
-        $berita->user_id = Auth::user()->id;
-        $berita->judul=$request->judul;
-        $berita->konten=$request->konten;
-        $berita->admin =$request->admin;
-        $berita->tanggal=$request->tanggal;
-        $berita->image=$request->$nama_image;
-        $berita->save();
 
-            if(request()->hasFile(key: 'image')){
+        if($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('berita-images');
+        }
+        
+        $validatedData['user_id'] = auth()->user()->id;
+
+        Berita::create($validatedData);
+
+        return redirect()->route('admin.berita')->with('success', 'Berhasil menambah data');
+
+            /* if(request()->hasFile(key: 'image')){
                 $image = request()->file(key: 'image')->getClientOriginalName();
                 request()->file(key: 'image')->storeAs('/post-image', $image, options:'');
                 $berita->update(['image'=>$image]);
-            }
-            return redirect('admin.berita')->with('success', 'Data Berhasil Ditambahkan!');
+            } */
     }
     /**
      * Display the specified resource.

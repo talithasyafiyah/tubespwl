@@ -46,7 +46,7 @@
                                     @php $i++ @endphp
                                         <td>{{$i}}</td>
                                         <td>{{$kelas->nama_kelas}}</td>
-                                        <td><td><a href="{{ url('editkelas', $kelas->kelas_id)}}" type="submit" class='btn btn-success btn-sm'><i class='fa fa-edit'></i></a></td></td>
+                                        <td><a href="{{ url('editkelas', $kelas->kelas_id)}}" type="submit" class='btn btn-success btn-sm'><i class='fa fa-edit'></i></a></td>
                                         <td>
                                             <form action="{{url('/deletekelas',$kelas->kelas_id)}}" method="POST">
                                                 @method('delete')

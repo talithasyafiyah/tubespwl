@@ -29,43 +29,49 @@
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <label>User id</label>
-                                        </div>
-                                        <div class="col-md-8 form-group">
-                                            <input type="text" id="user_id" class="form-control"
-                                                name="user_id" placeholder="User_id">
-                                        </div>
-                                        <div class="col-md-4">
                                             <label>Judul</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            <input type="text" id="judul" class="form-control"
+                                            <input type="text" id="judul" class="form-control @error('judul') is-invalid @enderror"
                                                 name="judul" placeholder="Judul">
+                                        @error('judul')
+                                            <div class="invalid-feedback">
+                                                {{$message}}
+                                            </div>
+                                        @enderror
                                         </div>
                                         <div class="col-md-4">
                                             <label>Konten</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            <input type="text" id="konten" class="form-control"
+                                            <input type="text" id="konten" class="form-control @error('konten') is-invalid @enderror"
                                                 name="konten" placeholder="Konten">
+                                        @error('konten')
+                                            <div class="invalid-feedback">
+                                                {{$message}}
+                                            </div>
+                                        @enderror
                                         </div>
                                         <div class="col-md-4">
                                             <label>Tanggal</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            <input type="date" id="tanggal" class="form-control"
+                                            <input type="date" id="tanggal" class="form-control @error('tanggal') is-invalid @enderror"
                                                 name="tanggal" placeholder="Tanggal">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>Admin</label>
-                                        </div>
-                                        <div class="col-md-8 form-group">
-                                            <input type="text" id="admin" class="form-control"
-                                                name="admin" placeholder="Admin">
+                                        @error('tanggal')
+                                            <div class="invalid-feedback">
+                                                {{$message}}
+                                            </div>
+                                        @enderror
                                         </div>
                                         <div class="mb-3">
                                              <label for="image" class="form-label">Upload Gambar</label>
-                                             <input class="form-control" type="file" id="image" name="image">
+                                             <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image">
+                                        @error('image')
+                                            <div class="invalid-feedback">
+                                                {{$message}}
+                                            </div>
+                                        @enderror
                                         </div>
 
                                         <div class="col-sm-12 d-flex justify-content-end">

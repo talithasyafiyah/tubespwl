@@ -238,7 +238,7 @@
                 @foreach ($beritas as $berita)
                 <div class="col-lg-4 col-md-6 portfolio-item first">
                     <div class="portfolio-img rounded overflow-hidden">
-                        <img class="img-fluid" src="landing/img/rapat orangtua.jpg" alt="">
+                        <img class="img-fluid" src="{{asset('storage/'.$berita->image)}}" alt="">
                         <div class="portfolio-btn">
                             <a class="btn btn-lg-square btn-outline-light rounded-circle mx-1" href="landing/img/rapat orangtua.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                             <a class="btn btn-lg-square btn-outline-light rounded-circle mx-1" href=""><i class="fa fa-link"></i></a>
@@ -298,7 +298,7 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="team-item rounded overflow-hidden">
                         <div class="d-flex">
-                            <img class="img-fluid w-75" src="landing/img/team-3.jpg" alt="">
+                            <img class="img-fluid w-75" src="landing/img/dhani.jpg" alt="">
                             <div class="team-social w-25">
                                 <a class="btn btn-lg-square rounded-circle mt-3" href=""><i class="fab fa-facebook-f"></i></a>
                                 <a class="btn btn-lg-square rounded-circle mt-3" href=""><i class="fab fa-twitter"></i></a>
@@ -333,7 +333,7 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="team-item rounded overflow-hidden">
                         <div class="d-flex">
-                            <img class="img-fluid w-75" src="landing/img/team-2.jpg" alt="">
+                            <img class="img-fluid w-75" src="landing/img/rahman.jpeg" alt="">
                             <div class="team-social w-25">
                                 <a class="btn btn-lg-square rounded-circle mt-3" href=""><i class="fab fa-facebook-f"></i></a>
                                 <a class="btn btn-lg-square rounded-circle mt-3" href=""><i class="fab fa-twitter"></i></a>

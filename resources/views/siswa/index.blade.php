@@ -7,27 +7,25 @@
             <div id="main-content">
                 <div class="page-content">
                     <section class="row">
-                        <div class="col-12 col-lg-12 card p-4" style="height: 100vh;">
+                        <div class="col-12 col-lg-12" style="height: 100vh;">
                             
                             <div class="row row-cols-1 row-cols-md-2 g-4">
 
                                 @foreach ($beritas as $berita)
                                 <div class="col">
                                     <div class="card shadow">
-                                      <img src="assets/images/test.jpg" class="card-img-top" alt="...">
+                                      <img src="{{asset('storage/'.$berita->image)}}" class="card-img-top" alt="...">
                                       <div class="card-body">
                                         <h5 class="card-title">{{$berita->judul}}</h5>
                                         <p class="card-text">{{$berita->konten}}</p>
                                         <div class="d-flex align-items-center ">
-                                            <p class="my-0 mx-2 fs-6">{{$berita->tanggal}}</p>
+                                            <?php $time = strtotime($berita->tanggal) ?>
+                                            <p class="my-0 mx-2 fs-6">{{date('D, M Y', $time)}}</p>
                                         </div>
                                       </div>
                                     </div>
                                 </div>
                                 @endforeach
-
-                                
-                                
                               </div>
                             
                         </div>

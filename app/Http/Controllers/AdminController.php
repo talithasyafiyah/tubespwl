@@ -160,11 +160,6 @@ class AdminController extends Controller
                     ->get();
         return view('admin.berita', compact('beritas'));
     }
-
-    public function addberita()
-    {
-        return view('admin.addberita');
-    }
     
     public function deletetabungan($id)
     {

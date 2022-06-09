@@ -45,7 +45,7 @@ Route::group(['middleware' => ['auth','ceklevel:Admin']], function() {
     Route::get('/editkelas/{id}', [KelasController::class, 'edit'])->name('admin.editkelas');
     Route::put('/updatekelas/{id}', [KelasController::class, 'update'])->name('admin.updatekelas');
     //berita
-    Route::get('berita', [AdminController::class, 'berita'])->name('admin.berita');
+    Route::get('berita', [BeritaController::class, 'index'])->name('admin.berita');
     Route::get('/addberita', [BeritaController::class, 'create'])->name('admin.addberita');
     Route::post('/insertberita', [BeritaController::class, 'store'])->name('insertberita');
     //tabungan

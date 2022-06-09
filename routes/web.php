@@ -68,8 +68,13 @@ Route::group(['middleware' => ['auth','ceklevel:Admin']], function() {
 Route::group(['middleware' => ['auth','ceklevel:Siswa']], function() {
     Route::get('dashSiswa', [SiswaController::class, 'dashSiswa'])->name('siswa.dashSiswa');
     Route::get('Siswa', [SiswaController::class, 'Siswa'])->name('siswa.siswa');
-    Route::get('Tabungan', [SiswaController::class, 'Tabungan'])->name('siswa.tabungan'); //Read
-    Route::post('Tabungan/store', [TabunganController::class, 'store'])->name('siswa.simpan'); //Create
+    Route::get('Tabungan', [SiswaController::class, 'Tabungan'])->name('siswa.tabungan');       //Read dan Form
+    // Route::post('Tabungan/store', [TabunganController::class, 'store'])->name('siswa.simpan'); 
+    Route::post('Tabungan/store', [SiswaController::class, 'store'])->name('siswa.simpan');     //Create Insert
+    Route::get('Profil', [SiswaController::class, 'buatProfil'])->name('siswa.profil');         //Create Form
+    Route::post('Profil/store', [SiswaController::class, 'storeProfil'])->name('siswa.simpanprofil'); //Create Insert
+    Route::get('Profil/{id}/edit', [SiswaController::class, 'edit'])->name('siswa.editprofil');        //Edit Profil
+    Route::put('Profilupdate/{id}',[SiswaController::class, 'update'])->name('siswa.updateprofil');   //Update Profil
     Route::get('Transaksi', [SiswaController::class, 'Transaksi'])->name('siswa.transaksi');
     Route::get('Report', [ReportController::class, 'index'])->name('siswa.report');
     Route::get('/report/{id}',[ReportController::class, 'downloadPDF'])->name('download');

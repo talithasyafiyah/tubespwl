@@ -40,7 +40,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <h4 style="text-align: center">Tabungan Saya</h4>
+                            <h4 style="text-align: center">Informasi Tabungan Saya</h4>
                             <br>
                             @auth
                             <table class="table table-bordered table-hover" style="text-align: center; border:black">
@@ -50,7 +50,7 @@
                                     <th>Tanggal Setoran</th>
                                     <th>Jumlah Setoran</th>
                                     <th>Payment</th>
-                                    <th>No.Rekening</th>
+                                    <th>No.Rekening / E-Wallet</th>
                                     <th>Status</th>
                                 </tr>
                                 </thead>
@@ -121,8 +121,14 @@
                                     </div>
                                 </div>
                                 <br>
+                                {{-- Masih Belum FIX --}}
+                                @if ($data->id = Auth::user()->id)
                                 <div class="row mb-1">
-                                    <a type="button" class="btn btn-outline-primary btn-lg mb-1"  href=""><i class="fa-solid fa-pen-to-square"></i> Edit Profil</a>
+                                    <a type="button" class="btn btn-outline-warning btn-lg mb-1"  href="Profil/{{auth()->user()->id }}/edit"><i class="fa-solid fa-pen-to-square"></i> Edit Profil</a>
+                                </div>
+                                @endif
+                                <div class="row mb-1">
+                                    <a type="button" class="btn btn-outline-success btn-lg mb-1"  href="{{ route('siswa.profil') }}"><i class="fa-solid fa-pen-to-square"></i> Buat Profil</a>
                                 </div>
                                 @endforeach
                                 

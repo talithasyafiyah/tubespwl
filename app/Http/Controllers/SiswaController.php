@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Middleware\Authenticate;
+use App\Http\Controllers\Redirect;
 use Illuminate\Support\Facades\DB;
 use App\Models\Berita;
 use App\Models\Kelas;
@@ -33,6 +34,37 @@ class SiswaController extends Controller
         //
     }
 
+    public function buatProfil()
+    {
+        $sis = Siswa::all();
+        $x = Kelas::all();
+        return view('siswa.buatprofil', compact( 'x', 'sis'));
+    }
+    
+    public function storeProfil(Request $request)
+    {
+        //yang bagian NONE
+        $request->validate([
+            'nisn'=>'required|max:10',
+            'nama'=> 'required|max:50',
+            'alamat'=>'required',
+            'no_hp'=>'required|max:13',
+            'kelas_id'=>'required',   
+        ]);
+
+        $siswa = new Siswa;
+        $siswa->nisn =$request->nisn;
+        $siswa->nama =$request->nama;
+        $siswa->alamat=$request->alamat;
+        $siswa->no_hp=$request->no_hp;
+        $siswa->saldo= 0;
+        $siswa->kelas_id=$request->kelas_id;
+        $siswa->user_id= Auth::user()->id;
+        $siswa->save();
+        
+       
+        return redirect('/Profil')->with('success', 'Berhasil Membuat Profil!');
+    } 
     /**
      * Store a newly created resource in storage.
      *
@@ -43,37 +75,17 @@ class SiswaController extends Controller
     {
         //yang bagian NONE
         $request->validate([
-            // 'nisn'=>'required|max:10',
-            // 'nama'=> 'required|max:50',
-            // 'alamat'=>'required',
-            // 'no_hp'=>'required|max:13',
-            // 'saldo'=>'required',
-            // 'kelas_id'=>'required',
-            // 'user_id'=>'required',
             'tgl_setoran'=>'required',
             'jlh_setoran'=>'required',
             'payment'=>'required',
             'no_rekening'=>'required',
         ]);
-
-        // $siswa = new Siswa;
-        // $siswa->nisn =$request->nisn;
-        // $siswa->nama =$request->nama;
-        // $siswa->alamat=$request->alamat;
-        // $siswa->no_hp=$request->no_hp;
-        // $siswa->saldo=$request->saldo;
-        // $siswa->kelas_id=$request->kelas_id;
-        // $siswa->user_id=$request->user_id;
-        // $siswa->save();
-        
         $tabungan = new Tabungan;
-        $tabungan->nisn=$request->nisn;
+        $tabungan->NISN=$request->NISN;
         $tabungan->jlh_setoran=$request->jlh_setoran;
         $tabungan->tgl_setoran=$request->tgl_setoran;
         $tabungan->payment=$request->payment;
-        // $tabungan->status=$request->status;
         $tabungan->no_rekening=$request->no_rekening;
-        $tabungan->kelas_id=$request->kelas_id;
         $tabungan->save();
         return redirect('/Tabungan')->with('success', 'Berhasil menabung!!!!');
     }
@@ -95,9 +107,14 @@ class SiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //Masih ERROR
     public function edit($id)
     {
-        //
+        // $sis = Siswa::all();
+        $x= Kelas::all();
+        $sis = Siswa::find($id);
+        return view('siswa.editprofil', compact('sis', 'x'));
     }
 
     /**
@@ -107,9 +124,14 @@ class SiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //Masih ERROR
     public function update(Request $request, $id)
     {
-        //
+        $x = Kelas::all();
+        $sis = Siswa::find($id);
+        $sis->update($request->except(['_token', 'submit']));
+        return redirect('siswa.siswa', compact('x'))->with('success', 'Profil berhasil diedit!');
     }
 
     /**

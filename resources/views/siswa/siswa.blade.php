@@ -49,9 +49,10 @@
                                     <th>ID.</th>
                                     <th>Tanggal Setoran</th>
                                     <th>Jumlah Setoran</th>
-                                    <th>Payment</th>
+                                    <th>Metode Pembayaran</th>
                                     <th>No.Rekening / E-Wallet</th>
                                     <th>Status</th>
+                                    <th>Aksi</th>
                                 </tr>
                                 </thead>
                                 @foreach ($x as $tabungan)
@@ -64,6 +65,15 @@
                                     <td>{{ $tabungan->payment }}</td>
                                     <td>{{ $tabungan->no_rekening }}</td>
                                     <td>{{ $tabungan->status }}</td>
+                                    @if ($tabungan->status != 'accepted')
+                                    <td>
+                                        <form action="{{url('/del',$tabungan->tabungan_id)}}" method="POST">
+                                            @method('delete')
+                                            @csrf
+                                            <button type="submit" class='btn btn-outline-danger btn-sm' onclick="return confirm('Apakah yakin ingin menghapus data ini?')"><i class='fa fa-trash-can'></i></button>
+                                        </form>
+                                    </td>
+                                    @endif
                                 </tr>
                                 </tbody>
                                 @endforeach
@@ -127,11 +137,11 @@
                                     <a type="button" class="btn btn-outline-warning btn-lg mb-1"  href="Profil/{{auth()->user()->id }}/edit"><i class="fa-solid fa-pen-to-square"></i> Edit Profil</a>
                                 </div>
                                 @endif
+                                
+                                @endforeach
                                 <div class="row mb-1">
                                     <a type="button" class="btn btn-outline-success btn-lg mb-1"  href="{{ route('siswa.profil') }}"><i class="fa-solid fa-pen-to-square"></i> Buat Profil</a>
                                 </div>
-                                @endforeach
-                                
                             </div>
                             
                         </div>

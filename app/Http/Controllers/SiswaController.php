@@ -40,7 +40,7 @@ class SiswaController extends Controller
         $x = Kelas::all();
         return view('siswa.buatprofil', compact( 'x', 'sis'));
     }
-    
+
     public function storeProfil(Request $request)
     {
         //yang bagian NONE
@@ -142,7 +142,9 @@ class SiswaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Tabungan::destroy($id);
+
+        return redirect()->route('siswa.siswa')->with('success', 'Berhasil menghapus data');
     }
 
     //custom

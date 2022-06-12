@@ -27,4 +27,8 @@ class Siswa extends Model
     public function tabungan(){
         return $this->hasOne(Tabungan::class);
     }
+
+    public function user(){
+        return $this->hasOne(User::class);
+    }
 }

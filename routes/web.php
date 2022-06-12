@@ -48,6 +48,10 @@ Route::group(['middleware' => ['auth','ceklevel:Admin']], function() {
     Route::get('berita', [BeritaController::class, 'index'])->name('admin.berita');
     Route::get('/addberita', [BeritaController::class, 'create'])->name('admin.addberita');
     Route::post('/insertberita', [BeritaController::class, 'store'])->name('insertberita');
+    Route::get('/editberita/{id}', [BeritaController::class, 'edit'])->name('admin.editberita');
+    Route::put('/updateberita/{id}', [BeritaController::class, 'update'])->name('admin.updateberita');
+    Route::put('/showberita/{id}', [BeritaController::class, 'show'])->name('admin.showberita');
+    Route::delete('/deleteberita/{id}', [BeritaController::class, 'destroy'])->name('admin.deleteberita');
     //tabungan
     Route::get('/tabungan', [TabunganController::class, 'index'])->name('admin.tabungan');
     Route::get('/addtabungan', [TabunganController::class, 'create'])->name('admin.addtabungan');
@@ -60,7 +64,6 @@ Route::group(['middleware' => ['auth','ceklevel:Admin']], function() {
     Route::put('/confirmAcc/{id}', [ConfirmController::class, 'confirmAcc']);
     Route::put('/confirmReject/{id}', [ConfirmController::class, 'confirmReject']);
     Route::get('confirm', [ConfirmController::class, 'index'])->name('admin.confirm');
-    Route::get('report', [AdminController::class, 'report'])->name('admin.report');
 
 });
 

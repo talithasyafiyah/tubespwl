@@ -224,7 +224,7 @@
 
     <a href="" id="berita"></a>
     <!-- Projects Start -->
-    <div class="container-xxl py-5" >
+    <div class="container-xxl py-5 mb-5" >
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                 <h6 class="text">Berita</h6>
@@ -234,6 +234,7 @@
                 <div class="col-12 text-center">
                 </div>
             </div>
+            
             <div class="row g-4 portfolio-container wow fadeInUp" data-wow-delay="0.5s">
                 @foreach ($beritas as $berita)
                 <div class="col-lg-4 col-md-6 portfolio-item first">
@@ -253,12 +254,13 @@
                 </div>
                 @endforeach
             </div>
+            
         </div>
     </div>
     <!-- Projects End -->
-
+    <br>
     <!--Team Start  -->
-    <div class="container-xxl py-5" id="kontak">
+    <div class="container-xxl py-5 mt-5" id="kontak">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                 <h6 class="text">Kontak</h6>

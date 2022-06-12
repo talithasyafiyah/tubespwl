@@ -61,7 +61,7 @@
                                             <label>No Rekening</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            <input type="number" id="no_rekening" class="form-control"
+                                            <input type="text" id="no_rekening" class="form-control"
                                                 name="no_rekening" value="{{old('no_rekening', $data->no_rekening)}}">
                                         </div>
                                         <div class="col-sm-12 d-flex justify-content-end">

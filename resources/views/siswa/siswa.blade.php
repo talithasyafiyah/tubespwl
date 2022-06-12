@@ -43,8 +43,8 @@
                             <h4 style="text-align: center">Informasi Tabungan Saya</h4>
                             <br>
                             @auth
-                            <table class="table table-bordered table-hover" style="text-align: center; border:black">
-                                <thead style="background-color: rgb(220, 240, 248)">
+                            <table class="table table-striped" id="table1">
+                                <thead>
                                 <tr>
                                     <th>ID.</th>
                                     <th>Tanggal Setoran</th>
@@ -131,17 +131,23 @@
                                     </div>
                                 </div>
                                 <br>
-                                {{-- Masih Belum FIX --}}
-                                @if ($data->id = Auth::user()->id)
-                                <div class="row mb-1">
-                                    <a type="button" class="btn btn-outline-warning btn-lg mb-1"  href="Profil/{{auth()->user()->id }}/edit"><i class="fa-solid fa-pen-to-square"></i> Edit Profil</a>
-                                </div>
+                                @endforeach
+
+                                <?php
+                                use App\Models\Siswa; 
+                                $check = Siswa::where('user_id', auth()->user()->id)->exists();
+                                ?>
+
+                                @if ($check)
+                                    <div class="row mb-1">
+                                        <a type="button" class="btn btn-outline-warning btn-lg mb-1"  href="Profil/{{auth()->user()->id }}/edit"><i class="fa-solid fa-pen-to-square"></i> Edit Profil</a>
+                                    </div>
+                                @else
+                                    <div class="row mb-1">
+                                        <a type="button" class="btn btn-outline-success btn-lg mb-1"  href="{{ route('siswa.profil') }}"><i class="fa-solid fa-pen-to-square"></i> Buat Profil</a>
+                                    </div>
                                 @endif
                                 
-                                @endforeach
-                                <div class="row mb-1">
-                                    <a type="button" class="btn btn-outline-success btn-lg mb-1"  href="{{ route('siswa.profil') }}"><i class="fa-solid fa-pen-to-square"></i> Buat Profil</a>
-                                </div>
                             </div>
                             
                         </div>

@@ -148,11 +148,6 @@ class AdminController extends Controller
         return view('admin.confirm');
     }
 
-    public function report()
-    {
-        return view('admin.confirm');
-    }
-
     public function berita()
     {
         $beritas = \DB::table('beritas')
@@ -160,17 +155,5 @@ class AdminController extends Controller
                     ->get();
         return view('admin.berita', compact('beritas'));
     }
-    
-    public function deletetabungan($id)
-    {
-        dd($id);
-        /* Tabungan::destroy($id);
-        
-        return back()->with('success', 'Berhasil menghapus data'); */
 
-        /* dd($id);
-        Tabungan::find($id)->delete();
-
-        return redirect(route('admin.tabungan'))->with('success', 'Berhasil menghapus data'); */
-    }
 }

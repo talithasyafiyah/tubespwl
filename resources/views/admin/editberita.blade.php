@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('title', 'Tambah Tabungan')
+@section('title', 'Tambah Berita')
 
 @section('content')
     
@@ -9,13 +9,13 @@
                 <div class="page-title">
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>Tambah Tabungan</h3>
+                            <h3>Edit Berita</h3>
                         </div>
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Tabungan</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Edit Berita</li>
                                 </ol>
                             </nav>
                         </div>
@@ -24,65 +24,57 @@
                 <section class="section">
                     <div class="card">
                         <div class="card-body">
-                            <form action="/inserttabungan" method="POST" enctype="multipart/form-data" class="form form-horizontal">
+                            <form action="/updateberita/{{$data->berita_id}}" method="POST" enctype="multipart/form-data" class="form form-horizontal">
+                                @method('put')
                                 @csrf
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <label>NISN</label>
+                                            <label>Judul</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            <input type="text" id="NISN" class="form-control @error('NISN') is-invalid @enderror"
-                                                name="NISN" placeholder="NISN">
-                                                @error('NISN')
-                                                <div class="invalid-feedback">
-                                                    {{$message}}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>Jumlah Setoran</label>
-                                        </div>
-                                        <div class="col-md-8 form-group">
-                                            <input type="number" id="jlh_setoran" class="form-control @error('jlh_setoran') is-invalid @enderror"
-                                                name="jlh_setoran" placeholder="Jumlah Setoran">
-                                            @error('jlh_setoran')
+                                            <input type="text" id="judul" class="form-control @error('judul') is-invalid @enderror"
+                                                name="judul" value="{{old('judul', $data->judul)}}">
+                                        @error('judul')
                                             <div class="invalid-feedback">
                                                 {{$message}}
                                             </div>
                                         @enderror
                                         </div>
                                         <div class="col-md-4">
-                                            <label>Tanggal Setoran</label>
+                                            <label>Konten</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            <input type="date" id="tgl_setoran" class="form-control @error('tgl_setoran') is-invalid @enderror"
-                                                name="tgl_setoran" placeholder="Tanggal Setoran">
-                                            @error('tgl_setoran')
+                                            <input type="text" id="konten" class="form-control @error('konten') is-invalid @enderror"
+                                                name="konten" value="{{old('konten', $data->konten)}}">
+                                        @error('konten')
                                             <div class="invalid-feedback">
                                                 {{$message}}
                                             </div>
                                         @enderror
                                         </div>
                                         <div class="col-md-4">
-                                            <label>Payment</label>
+                                            <label>Tanggal</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            <input type="text" id="payment" class="form-control @error('payment') is-invalid @enderror"
-                                                name="payment" placeholder="Payment">
-                                            @error('payment')
+                                            <input type="date" id="tanggal" class="form-control @error('tanggal') is-invalid @enderror"
+                                                name="tanggal" value="{{old('tanggal', $data->tanggal)}}">
+                                        @error('tanggal')
                                             <div class="invalid-feedback">
                                                 {{$message}}
                                             </div>
                                         @enderror
                                         </div>
-                                        <div class="col-md-4">
-                                            <label>No Rekening</label>
+                                        <div class="mb-3">
+                                             <label for="image" class="form-label">Upload Gambar</label>
+                                             <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image">
+                                        @error('image')
+                                            <div class="invalid-feedback">
+                                                {{$message}}
+                                            </div>
+                                        @enderror
                                         </div>
-                                        <div class="col-md-8 form-group">
-                                            <input type="text" id="no_rekening" class="form-control"
-                                                name="no_rekening" placeholder="No Rekening">
-                                        </div>
+
                                         <div class="col-sm-12 d-flex justify-content-end">
                                             <button type="submit"
                                                 class="btn btn-primary me-1 mb-1">Simpan</button>

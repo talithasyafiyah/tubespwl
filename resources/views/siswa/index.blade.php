@@ -8,7 +8,7 @@
                 <div class="page-content">
                     <section class="row">
                         <div class="col-12 col-lg-12" style="height: 100vh;">
-                            
+                            <h3>Berita Seputar Sekolah</h3>
                             <div class="row row-cols-1 row-cols-md-2 g-4">
 
                                 @foreach ($beritas as $berita)
@@ -35,6 +35,8 @@
         </div>
     </div>
 
+    <script>
+    </script>
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
 

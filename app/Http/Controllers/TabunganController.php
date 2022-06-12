@@ -61,7 +61,7 @@ class TabunganController extends Controller
                 'jlh_setoran'=> $request->jlh_setoran,
                 'tgl_setoran'=>$request->tgl_setoran,
                 'payment'=>$request->payment,
-                'no_rekening'=>$request->rekening,
+                'no_rekening'=>$request->no_rekening,
                 'status' => 'accepted'
             ]);
 

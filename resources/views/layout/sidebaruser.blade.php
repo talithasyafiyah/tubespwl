@@ -18,7 +18,7 @@
                   </li>
 
                   <li class="sidebar-title">Tables</li>
-                  <li class="sidebar-item {{ Request::is('Siswa') ? 'active' : '' }}">
+                  <li class="sidebar-item {{ Request::is('Siswa') ? 'active' : '' }} || {{ Request::is('Profil') ? 'active' : '' }} || {{ Request::is('Profil/store') ? 'active' : '' }} || {{ Request::is('Profil/{id}') ? 'active' : '' }} || {{ Request::is('Profilupdate/{id}') ? 'active' : '' }}">
                       <a href="/Siswa" class='sidebar-link'>
                           <i class="bi bi-people-fill"></i>
                           <span>Data Siswa</span>
@@ -95,7 +95,7 @@
                                   </div>
                                   <div class="user-img d-flex align-items-center">
                                       <div class="avatar avatar-md">
-                                          <img src="assets/images/faces/1.jpg">
+                                          <img src="{{asset('assets/images/faces/1.jpg')}}">
                                       </div>
                                   </div>
                               </div>

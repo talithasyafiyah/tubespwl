@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('title', 'Tabungan')
+@section('title', 'Menabung')
 
 @section('content')
     
@@ -99,7 +99,7 @@
                                            
                                             <div class="col-sm-12 d-flex justify-content-end">
                                                 <button type="submit"
-                                                    class="btn btn-primary me-1 mb-1"><i class="fa-solid fa-hand-holding-dollar pe-4"></i>Menabung</button>
+                                                    class="btn btn-outline-primary me-1 mb-1"><i class="fa-solid fa-hand-holding-dollar pe-4"></i>Menabung</button>
                                             </div>
                                         </div>
                                     </div>
@@ -112,4 +112,11 @@
             </div>
         </div>
     </div>
+    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/vendors/apexcharts/apexcharts.js"></script>
+    <script src="assets/js/pages/dashboard.js"></script>
+
+    <script src="assets/js/main.js"></script>
 @endsection

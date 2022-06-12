@@ -34,7 +34,7 @@
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <input type="text" id="judul" class="form-control @error('judul') is-invalid @enderror"
-                                                name="judul" value="{{old('judul', $data->judul)}}">
+                                                name="judul" placeholder="Judul">
                                         @error('judul')
                                             <div class="invalid-feedback">
                                                 {{$message}}
@@ -46,7 +46,7 @@
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <input type="text" id="konten" class="form-control @error('konten') is-invalid @enderror"
-                                                name="konten" value="{{old('konten', $data->konten)}}">
+                                                name="konten" placeholder="Konten">
                                         @error('konten')
                                             <div class="invalid-feedback">
                                                 {{$message}}
@@ -58,7 +58,7 @@
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <input type="date" id="tanggal" class="form-control @error('tanggal') is-invalid @enderror"
-                                                name="tanggal" value="{{old('tanggal', $data->tanggal)}}">
+                                                name="tanggal" placeholder="Tanggal">
                                         @error('tanggal')
                                             <div class="invalid-feedback">
                                                 {{$message}}
